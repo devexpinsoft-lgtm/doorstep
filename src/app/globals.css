@@ -1,26 +1,224 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─── Brand Tokens ─── */
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui;
+  --font-poppins: var(--font-poppins), ui-sans-serif;
+
+  /* Brand Colors */
+  --color-brand-teal: #00C49A;
+  --color-brand-teal-light: #00D4AA;
+  --color-brand-teal-dark: #00A882;
+  --color-brand-blue: #1B4FD8;
+  --color-brand-blue-light: #2563EB;
+  --color-brand-blue-dark: #1340B8;
+  --color-brand-navy: #1E2D5A;
+  --color-brand-navy-light: #2A3F70;
+  --color-brand-navy-dark: #131D3A;
+
+  /* Shadows */
+  --shadow-brand: 0 4px 30px rgba(27, 79, 216, 0.15), 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-brand-lg: 0 10px 60px rgba(27, 79, 216, 0.2), 0 4px 16px rgba(0,0,0,0.1);
+  --shadow-card: 0 2px 20px rgba(30, 45, 90, 0.08);
+  --shadow-card-hover: 0 8px 40px rgba(27, 79, 216, 0.18), 0 2px 8px rgba(0,0,0,0.06);
+
+  /* Animations */
+  --animate-fade-in: fadeIn 0.5s ease-out forwards;
+  --animate-slide-up: slideUp 0.6s ease-out forwards;
+  --animate-bounce-gentle: bounceGentle 2s ease-in-out infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ─── Keyframes ─── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceGentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ─── Global Base ─── */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  color: #374151;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Utility Classes ─── */
+.text-gradient {
+  background-image: linear-gradient(135deg, #00C49A 0%, #1B4FD8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-hero {
+  background-image: linear-gradient(135deg, #132540 0%, #1E2D5A 60%, #0f2044 100%);
+}
+
+.bg-brand-gradient {
+  background-image: linear-gradient(135deg, #00C49A 0%, #1B4FD8 100%);
+}
+
+/* ─── Button Components ─── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  color: white;
+  background-image: linear-gradient(135deg, #00C49A 0%, #1B4FD8 100%);
+  box-shadow: 0 4px 20px rgba(27, 79, 216, 0.25);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(27, 79, 216, 0.35);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  border: 2px solid #1E2D5A;
+  color: #1E2D5A;
+  background: transparent;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-secondary:hover {
+  background: #1E2D5A;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn-outline-white {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  border: 2px solid white;
+  color: white;
+  background: transparent;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-outline-white:hover {
+  background: white;
+  color: #1E2D5A;
+  transform: translateY(-2px);
+}
+
+/* ─── Card Component ─── */
+.card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 20px rgba(30, 45, 90, 0.08);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 40px rgba(27, 79, 216, 0.18), 0 2px 8px rgba(0,0,0,0.06);
+  transform: translateY(-4px);
+}
+
+/* ─── Section Utilities ─── */
+.section-padding {
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 6rem 1rem;
+  }
+}
+
+.container-xl {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ─── Badge ─── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(0,196,154,0.12) 0%, rgba(27,79,216,0.12) 100%);
+  color: #1B4FD8;
+}
+
+/* ─── Form Components ─── */
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid #E2E8F0;
+  background: white;
+  color: #1f2937;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  outline: none;
+  appearance: none;
+}
+
+.form-input::placeholder {
+  color: #94A3B8;
+}
+
+.form-input:focus {
+  border-color: #1B4FD8;
+  box-shadow: 0 0 0 3px rgba(27, 79, 216, 0.15);
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.375rem;
+}
+
+/* ─── Font Poppins Utility ─── */
+.font-poppins {
+  font-family: 'Poppins', ui-sans-serif, system-ui;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #00C49A, #1B4FD8);
+  border-radius: 3px;
 }
