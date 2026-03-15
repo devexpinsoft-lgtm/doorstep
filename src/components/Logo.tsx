@@ -21,7 +21,7 @@ export default function Logo({
         : "drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]"
         }`}>
         <Image
-          src="/logocropped.png"
+          src="/logo_cropped.png"
           alt="Doorstep"
           width={300}
           height={60}
