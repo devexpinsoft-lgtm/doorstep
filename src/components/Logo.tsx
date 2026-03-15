@@ -7,22 +7,21 @@ interface LogoProps {
   variant?: 'default' | 'light';
 }
 
-export default function Logo({ 
-  className = "h-12", 
+export default function Logo({
+  className = "h-12",
   textColor = "text-white",
   variant = 'default'
 }: LogoProps) {
   const isLight = variant === 'light';
-  
+
   return (
     <div className={`flex items-center ${className}`}>
-      <div className={`relative h-full w-auto aspect-[5/1] ${
-        isLight 
-          ? "brightness-0 invert opacity-90" 
-          : "drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]"
-      }`}>
+      <div className={`relative h-full w-auto aspect-[5/1] ${isLight
+        ? "brightness-0 invert opacity-90"
+        : "drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]"
+        }`}>
         <Image
-          src="/logo2.png"
+          src="/logocropped.png"
           alt="Doorstep"
           width={300}
           height={60}
