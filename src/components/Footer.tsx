@@ -1,108 +1,124 @@
+"use client";
+import React from "react";
 import Link from "next/link";
-import Logo from "@/components/Logo";
-import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Facebook, Twitter, Instagram, Linkedin, Github } from "lucide-react";
+import { motion } from "framer-motion";
+import homeData from "../data/home.json";
 
-const footerLinks = {
-  Company: [
-    { label: "About Us", href: "/about" },
-    { label: "Our Services", href: "/services" },
-    { label: "How It Works", href: "/#how-it-works" },
-    { label: "Careers", href: "#" },
-  ],
-  Services: [
-    { label: "Home Cleaning", href: "/services" },
-    { label: "Plumbing", href: "/services" },
-    { label: "Electrical", href: "/services" },
-    { label: "HVAC & Heating", href: "/services" },
-    { label: "Home Repairs", href: "/services" },
-  ],
-  Support: [
-    { label: "Contact Us", href: "/contact" },
-    { label: "Book a Service", href: "/book" },
-    { label: "FAQs", href: "#" },
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-  ],
-};
-
-const socials = [
-  { icon: Facebook, label: "Facebook", href: "#" },
-  { icon: Twitter, label: "Twitter", href: "#" },
-  { icon: Instagram, label: "Instagram", href: "#" },
-  { icon: Linkedin, label: "LinkedIn", href: "#" },
-  { icon: Youtube, label: "YouTube", href: "#" },
-];
-
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
+const Footer = () => {
+  const { description, links, copyright } = homeData.footer;
 
   return (
-    <footer className="bg-brand-navy text-white">
-      {/* Main Footer */}
-      <div className="container-xl px-4 md:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+    <footer style={{ backgroundColor: "#FFFFFF", padding: "80px 0 40px 0", borderTop: "1px solid #E5E7EB" }}>
+      <div className="ds-container">
+        <div style={{ display: "grid", gridTemplateColumns: "1.5fr repeat(3, 1fr) 1fr", gap: "48px", marginBottom: "64px" }}>
+          
           {/* Brand Column */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="mb-5 block">
-              <Logo variant="light" />
+          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+            <Link href="/" style={{ textDecoration: "none" }}>
+              <div style={{ fontSize: "24px", fontWeight: "800", color: "var(--primary)", fontFamily: "var(--font-montserrat)" }}>
+                Doorstep
+              </div>
             </Link>
-            <p className="text-gray-300 text-sm leading-relaxed mb-6 max-w-sm">
-              Your trusted partner for all home services. We connect you with
-              certified professionals for a better, more comfortable home—right
-              when you need it.
+            <p style={{ fontSize: "14px", lineHeight: "24px", color: "#6B7280", fontFamily: "var(--font-opensans)", maxWidth: "260px" }}>
+              {description}
             </p>
-            {/* Contact Info */}
-            <div className="space-y-2 text-sm text-gray-300">
-              <p>📍 123 Main Street, New York, NY 10001</p>
-              <p>📞 +1 (800) 555-DOOR</p>
-              <p>✉️ hello@doorstephome.com</p>
+            <div style={{ display: "flex", gap: "16px" }}>
+              {[
+                { icon: <Facebook size={20} />, href: "#" },
+                { icon: <Twitter size={20} />, href: "#" },
+                { icon: <Instagram size={20} />, href: "#" },
+                { icon: <Linkedin size={20} />, href: "#" }
+              ].map((social, idx) => (
+                <motion.a
+                  key={idx}
+                  href={social.href}
+                  whileHover={{ y: -3, color: "var(--primary)" }}
+                  style={{ color: "#9CA3AF", transition: "color 0.2s ease" }}
+                >
+                  {social.icon}
+                </motion.a>
+              ))}
             </div>
           </div>
 
-          {/* Links Columns */}
-          {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
-              <h4 className="font-semibold text-white mb-5 font-poppins">
-                {title}
+          {/* Nav Columns from JSON */}
+          {links.map((column, idx) => (
+            <div key={idx} style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+              <h4 style={{ fontSize: "14px", fontWeight: "700", color: "#111827", fontFamily: "var(--font-montserrat)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                {column.title}
               </h4>
-              <ul className="space-y-3">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-400 text-sm hover:text-brand-teal transition-colors duration-200"
+              <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
+                {column.items.map((item, i) => (
+                  <li key={i}>
+                    <Link 
+                      href={item.href} 
+                      style={{ 
+                        fontSize: "14px", 
+                        color: "#6B7280", 
+                        textDecoration: "none", 
+                        fontFamily: "var(--font-opensans)",
+                        transition: "color 0.2s ease" 
+                      }}
                     >
-                      {link.label}
+                      <motion.span whileHover={{ x: 3, color: "var(--primary)" }}>
+                        {item.name}
+                      </motion.span>
                     </Link>
                   </li>
                 ))}
               </ul>
             </div>
           ))}
-        </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="container-xl px-4 md:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-400 text-sm">
-            &copy; {currentYear} Doorstep Inc. All rights reserved.
-          </p>
-          {/* Social Icons */}
-          <div className="flex items-center gap-3">
-            {socials.map(({ icon: Icon, label, href }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-teal transition-all duration-200"
-              >
-                <Icon size={15} />
-              </a>
-            ))}
+          {/* Newsletter Column */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
+            <h4 style={{ fontSize: "14px", fontWeight: "700", color: "#111827", fontFamily: "var(--font-montserrat)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+              Stay Updated
+            </h4>
+            <p style={{ fontSize: "13px", color: "#6B7280", fontFamily: "var(--font-opensans)", lineHeight: "20px" }}>
+              Subscribe to get the latest news and offers.
+            </p>
+            <div style={{ display: "flex", gap: "8px" }}>
+              <input 
+                type="email" 
+                placeholder="Email address" 
+                style={{ 
+                  flex: 1, 
+                  padding: "10px 16px", 
+                  borderRadius: "6px", 
+                  border: "1px solid #E5E7EB", 
+                  fontSize: "13px",
+                  fontFamily: "var(--font-opensans)",
+                  outline: "none"
+                }} 
+              />
+              <button style={{ 
+                backgroundColor: "var(--primary)", 
+                color: "white", 
+                border: "none", 
+                padding: "10px 16px", 
+                borderRadius: "6px", 
+                cursor: "pointer",
+                fontFamily: "var(--font-montserrat)",
+                fontWeight: "600",
+                fontSize: "13px"
+              }}>
+                Join
+              </button>
+            </div>
           </div>
+        </div>
+
+        {/* Bottom Bar from JSON */}
+        <div style={{ borderTop: "1px solid #F3F4F6", paddingTop: "40px", textAlign: "center" }}>
+          <p style={{ fontSize: "12px", color: "#9CA3AF", fontFamily: "var(--font-opensans)" }}>
+            {copyright}
+          </p>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

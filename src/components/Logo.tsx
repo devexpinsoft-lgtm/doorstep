@@ -1,34 +1,34 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
 
 interface LogoProps {
   className?: string;
-  textColor?: string;
-  variant?: 'default' | 'light';
+  variant?: "default" | "light";
 }
 
-export default function Logo({
-  className = "h-12",
-  textColor = "text-white",
-  variant = 'default'
-}: LogoProps) {
-  const isLight = variant === 'light';
-
+const Logo = ({ className = "" }: LogoProps) => {
   return (
-    <div className={`flex items-center ${className}`}>
-      <div className={`relative h-full w-auto aspect-[5/1] ${isLight
-        ? "brightness-0 invert opacity-90"
-        : "drop-shadow-[0_2px_8px_rgba(255,255,255,0.15)]"
-        }`}>
-        <Image
-          src="/logo_cropped.png"
-          alt="Doorstep"
-          width={300}
-          height={60}
-          className="object-contain h-full w-auto"
-          priority
-        />
-      </div>
-    </div>
+    <Link 
+      href="/" 
+      className={`flex items-center ${className}`}
+      style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        textDecoration: 'none',
+        flexShrink: 0
+      }}
+    >
+      <Image 
+        src="/doorstep-full-logo.png" 
+        alt="Doorstep" 
+        width={100} 
+        height={50} 
+        style={{ height: '44px', width: 'auto', display: 'block' }}
+        priority
+      />
+    </Link>
   );
-}
+};
+
+export default Logo;
