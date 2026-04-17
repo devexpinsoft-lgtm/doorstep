@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import pricingData from "../../data/pricing.json";
 
 const PricingHero = () => {
-  const { badge, titleLine1, titleLine2, description, image } = pricingData.hero;
+  const { badge, titleLine1, titleLine2, description } = pricingData.hero;
 
   return (
     <section className="ds-section" style={{ paddingTop: '160px', paddingBottom: '100px', backgroundColor: '#F6F4F1' }}>
@@ -62,32 +62,28 @@ const PricingHero = () => {
             </p>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-            whileHover="hover"
-            style={{ position: 'relative', cursor: 'pointer' }}
-          >
-            <motion.div
-              variants={{
-                hover: { scale: 1.02, boxShadow: '0 30px 60px rgba(0,0,0,0.12)' }
-              }}
+          <div style={{ position: 'relative' }}>
+            <motion.div 
+              whileHover="hover"
               style={{ 
                 borderRadius: '24px', 
                 overflow: 'hidden', 
                 boxShadow: '0 20px 40px rgba(0,0,0,0.08)',
-                position: 'relative'
+                position: 'relative',
+                cursor: 'pointer'
+              }}
+              variants={{
+                hover: { scale: 1.02, boxShadow: '0 40px 80px rgba(43, 138, 126, 0.15)' }
               }}
             >
               <motion.div
                 variants={{
-                  hover: { filter: 'saturate(1.1) brightness(1.05)', scale: 1.05 }
+                  hover: { filter: 'saturate(1.1) brightness(1.05)' }
                 }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.4 }}
               >
                 <Image 
-                  src={image}
+                  src="/images/pricing-hero.png"
                   alt="Pricing Hero"
                   width={600}
                   height={400}
@@ -95,26 +91,27 @@ const PricingHero = () => {
                   priority
                 />
               </motion.div>
-              {/* Shine Sweep */}
+
+              {/* High-Fidelity Shine Effect */}
               <motion.div
                 variants={{
                   hover: { x: ['-100%', '200%'] }
                 }}
-                transition={{ duration: 1.2, ease: "easeInOut" }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
                 style={{
                   position: 'absolute',
                   top: 0,
                   left: 0,
                   width: '60%',
                   height: '100%',
-                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
+                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)',
                   transform: 'skewX(-25deg)',
                   zIndex: 2,
                   pointerEvents: 'none'
                 }}
               />
             </motion.div>
-          </motion.div>
+          </div>
 
         </div>
       </div>

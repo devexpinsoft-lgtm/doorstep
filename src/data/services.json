@@ -34,7 +34,7 @@
       ],
       "image": "/images/home-cleaning-hero.png",
       "buttonText": "Book Now",
-      "buttonLink": "/book?service=home-cleaning",
+      "buttonLink": "/book",
       "bgColor": "#f0fdfa"
     }
   ],

@@ -3,7 +3,6 @@ import { Montserrat, Open_Sans, Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import CTA from "@/components/home/CTA";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -28,10 +27,10 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   title: {
-    default: "Doorstep – Professional Home Services On Demand",
-    template: "%s | Doorstep",
+    default: "DoorStep",
+    template: "%s - DoorStep",
   },
-  description: "Doorstep connects you with certified home service professionals. Book trusted services online in minutes.",
+  description: "DoorStep connects you with certified home service professionals. Book trusted services online in minutes.",
 };
 
 export default function RootLayout({
@@ -44,7 +43,6 @@ export default function RootLayout({
       <body className="bg-white antialiased">
         <Navbar />
         <main>{children}</main>
-        <CTA />
         <Footer />
       </body>
     </html>

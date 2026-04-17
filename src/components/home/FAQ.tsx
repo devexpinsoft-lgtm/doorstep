@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import homeData from "../../data/home.json";
 
 const FAQ = () => {
-  const { badge, title, items } = homeData.faq;
+  const { badge, items } = homeData.faq;
 
   return (
-    <section className="ds-section" style={{ backgroundColor: '#F9FBFC', padding: '100px 0' }}>
+    <section className="ds-section" id="faq" style={{ backgroundColor: '#F9FBFC', padding: '100px 0' }}>
       <div className="ds-container" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         
         {/* Centered Pill Badge and Heading Forced Centering */}

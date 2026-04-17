@@ -1,22 +1,28 @@
 "use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Trees, Sparkles, Check } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
-const IconMap: { [key: string]: any } = {
-  Tree: Trees,
-  Sparkles: Sparkles,
-};
-
-const MotionIconMap: { [key: string]: any } = {
+const MotionIconMap: Record<string, any> = {
   Tree: motion(Trees),
   Sparkles: motion(Sparkles),
 };
 
 const DefaultMIcon = motion(Trees);
 
+interface PricingPlan {
+  title: string;
+  icon: string;
+  subtitle: string;
+  basePrice: string;
+  table: Array<{ label: string; price: string }>;
+  includes: string[];
+}
+
 interface PricingCardProps {
-  plan: any;
+  plan: PricingPlan;
   index: number;
 }
 
@@ -39,7 +45,7 @@ const PricingCard = ({ plan, index }: PricingCardProps) => {
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
-        cursor: 'pointer'
+        cursor: 'default'
       }}
       variants={{
         hover: { 
@@ -97,13 +103,13 @@ const PricingCard = ({ plan, index }: PricingCardProps) => {
 
       {/* Pricing Table */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '32px' }}>
-        {plan.table.map((row: any, i: number) => (
+        {plan.table.map((row, i) => (
           <motion.div 
             key={i}
             whileHover={{ scale: 1.02, backgroundColor: '#F9FAFB' }}
             style={{ 
               display: 'flex', 
-              justifyContent: 'between', 
+              justifyContent: 'space-between', 
               alignItems: 'center', 
               padding: '8px 16px', 
               backgroundColor: '#F4F7FB', 
@@ -156,26 +162,28 @@ const PricingCard = ({ plan, index }: PricingCardProps) => {
         </div>
       </div>
 
-      {/* Button */}
-      <motion.button
-        whileHover={{ scale: 1.05, boxShadow: '0 10px 20px rgba(43, 138, 126, 0.2)' }}
-        whileTap={{ scale: 0.98 }}
-        style={{
-          width: '100%',
-          padding: '16px',
-          backgroundColor: '#2B8A7E',
-          color: 'white',
-          border: 'none',
-          borderRadius: '4px',
-          fontSize: '14px',
-          fontWeight: '600',
-          fontFamily: 'var(--font-montserrat)',
-          cursor: 'pointer',
-          transition: 'all 0.3s ease'
-        }}
-      >
-        Book Now
-      </motion.button>
+      {/* Button wrapped in Link */}
+      <Link href="/book" style={{ textDecoration: 'none' }}>
+        <motion.button
+          whileHover={{ scale: 1.05, boxShadow: '0 10px 20px rgba(43, 138, 126, 0.2)' }}
+          whileTap={{ scale: 0.98 }}
+          style={{
+            width: '100%',
+            padding: '16px',
+            backgroundColor: '#2B8A7E',
+            color: 'white',
+            border: 'none',
+            borderRadius: '4px',
+            fontSize: '14px',
+            fontWeight: '600',
+            fontFamily: 'var(--font-montserrat)',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease'
+          }}
+        >
+          Book Now
+        </motion.button>
+      </Link>
     </motion.div>
   );
 };

@@ -13,12 +13,12 @@
       },
       {
         "name": "Providers",
-        "href": "#providers",
+        "href": "/providers",
         "size": "13.77px"
       },
       {
         "name": "About",
-        "href": "#about",
+        "href": "/about",
         "size": "14px"
       }
     ],
@@ -44,6 +44,7 @@
     ],
     "description": "Unlike traditional marketplaces, Doorstep eliminates the need to browse, compare, and negotiate. We match you with the right provider instantly.",
     "ctaText": "Book Your Service",
+    "image": "/images/hero-handyman.png",
     "stats": [
       {
         "id": "rating",
@@ -285,7 +286,8 @@
   "cta": {
     "title": "Ready to get started?",
     "description": "Book a service in under 60 seconds. No commitments, transparent pricing, and satisfaction guaranteed on every single job.",
-    "buttonText": "Get Started Now"
+    "buttonText": "Get Started Now",
+    "image": "/images/family-happy.png"
   },
   "footer": {
     "description": "The smarter way to handle your home. Book trusted local professionals in minutes.",

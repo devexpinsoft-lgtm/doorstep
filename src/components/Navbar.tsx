@@ -1,20 +1,13 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import homeData from "../data/home.json";
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const pathname = usePathname();
 
   const { links, cta } = homeData.navbar;
 
@@ -61,29 +54,32 @@ const Navbar = () => {
           display: 'flex', 
           gap: '32px',
           fontFamily: 'var(--font-montserrat)',
-          fontWeight: '500', 
-          color: '#374151'
+          fontWeight: '500'
         }}>
-          {links.map((link) => (
-            <Link key={link.name} href={link.href} style={{ textDecoration: 'none', position: 'relative' }}>
-              <motion.span
-                whileHover={{ color: 'var(--primary)' }}
-                style={{ 
-                  fontSize: link.size, 
-                  color: '#374151', 
-                  transition: 'color 0.3s ease' 
-                }}
-              >
-                {link.name}
-              </motion.span>
-              <motion.div 
-                className="ds-absolute ds-bottom-[-10px] ds-left-0 ds-right-0 ds-h-[2px] ds-bg-[#2B8A7E]"
-                initial={{ scaleX: 0 }}
-                whileHover={{ scaleX: 1 }}
-                transition={{ duration: 0.3 }}
-              />
-            </Link>
-          ))}
+          {links.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link key={link.name} href={link.href} style={{ textDecoration: 'none', position: 'relative' }}>
+                <motion.span
+                  whileHover={{ color: '#2B8A7E' }}
+                  style={{ 
+                    fontSize: link.size, 
+                    color: isActive ? '#2B8A7E' : '#374151', 
+                    transition: 'color 0.3s ease' 
+                  }}
+                >
+                  {link.name}
+                </motion.span>
+                <motion.div 
+                  className="ds-absolute ds-bottom-[-10px] ds-left-0 ds-right-0 ds-h-[2px] ds-bg-[#2B8A7E]"
+                  initial={{ scaleX: isActive ? 1 : 0 }}
+                  animate={{ scaleX: isActive ? 1 : 0 }}
+                  whileHover={{ scaleX: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </Link>
+            );
+          })}
         </div>
 
         {/* Right Nav Action from JSON */}
@@ -92,7 +88,7 @@ const Navbar = () => {
           whileHover={{ scale: 1.05, boxShadow: "0 4px 10px rgba(43, 138, 126, 0.2)" }}
           whileTap={{ scale: 0.95 }}
           style={{
-            backgroundColor: 'var(--primary)',
+            backgroundColor: '#2B8A7E',
             color: 'white',
             padding: '8px 20px',
             borderRadius: '6px',

@@ -5,7 +5,7 @@ import { CheckCircle, Clock, Shield } from "lucide-react";
 export const metadata: Metadata = {
   title: "Book a Service",
   description:
-    "Book a professional home service with Doorstep. Fill out the quick form and we'll match you with a certified pro — same day, guaranteed.",
+    "Book a professional home service with DoorStep. Fill out the quick form and we'll match you with a certified pro — same day, guaranteed.",
 };
 
 const perks = [
@@ -16,58 +16,118 @@ const perks = [
 
 export default function BookPage() {
   return (
-    <>
-      {/* Hero */}
-      <section className="bg-hero pt-32 pb-16 px-4">
-        <div className="container-xl px-4 md:px-8 text-center">
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white/80 text-sm font-medium mb-6">
-            Fast & Easy Booking
-          </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-white font-poppins mb-4">
-            Book a <span className="text-gradient">Service</span>
+    <main style={{ minHeight: '100vh', backgroundColor: '#F8FAFC' }}>
+      {/* High-Fidelity Hero for Booking */}
+      <section style={{ 
+        position: 'relative',
+        width: '100%',
+        paddingBottom: '100px',
+        paddingTop: '160px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        overflow: 'hidden',
+        backgroundColor: '#111827' // Dark professional theme
+      }}>
+        {/* Subtle background texture or gradient */}
+        <div style={{ 
+          position: 'absolute', 
+          inset: 0, 
+          background: 'linear-gradient(135deg, #111827 0%, #1F2937 100%)',
+          zIndex: 0
+        }} />
+        
+        <div className="ds-container" style={{ position: 'relative', zIndex: 2, textAlign: 'center' }}>
+          <div style={{ 
+            backgroundColor: 'rgba(255, 255, 255, 0.1)', 
+            color: 'rgba(255, 255, 255, 0.9)', 
+            padding: '4px 16px', 
+            borderRadius: '50px', 
+            display: 'inline-block',
+            fontSize: '13px',
+            fontWeight: '600',
+            fontFamily: 'var(--font-opensans)',
+            marginBottom: '24px',
+            border: '1px solid rgba(255, 255, 255, 0.1)'
+          }}>
+            FAST & EASY BOOKING
+          </div>
+          
+          <h1 style={{ 
+            fontSize: '42px', 
+            fontWeight: '800', 
+            color: 'white', 
+            fontFamily: 'var(--font-montserrat)', 
+            marginBottom: '20px',
+            letterSpacing: '-1px'
+          }}>
+            Book a <span style={{ color: '#2B8A7E' }}>Service</span>
           </h1>
-          <p className="text-white/70 text-lg max-w-xl mx-auto mb-8">
-            Tell us what you need, pick a time that works, and we&apos;ll handle the
-            rest. It takes less than 2 minutes.
+          
+          <p style={{ 
+            fontSize: '18px', 
+            color: 'rgba(255, 255, 255, 0.7)', 
+            lineHeight: '28px', 
+            maxWidth: '600px', 
+            margin: '0 auto 40px',
+            fontFamily: 'var(--font-montserrat)',
+            fontWeight: '400'
+          }}>
+            Tell us what you need, pick a time that works, and we&apos;ll handle the rest. It takes less than 2 minutes.
           </p>
-          {/* Perks */}
-          <div className="flex flex-wrap justify-center gap-5 text-white/70 text-sm">
-            {perks.map((p) => (
-              <span key={p.text} className="flex items-center gap-1.5">
-                <p.icon size={14} className="text-brand-teal" />
-                {p.text}
-              </span>
+
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '32px' }}>
+            {perks.map((p, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'rgba(255, 255, 255, 0.8)', fontSize: '14px', fontFamily: 'var(--font-opensans)' }}>
+                <p.icon size={16} color="#2B8A7E" />
+                <span>{p.text}</span>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Form Section */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-xl px-4 md:px-8">
-          <div className="max-w-3xl mx-auto">
-            <div className="card p-8 md:p-12 border border-gray-100">
-              <div className="mb-8">
-                <h2 className="text-2xl font-bold text-brand-navy font-poppins mb-2">
-                  Service Booking Form
-                </h2>
-                <p className="text-gray-500 text-sm">
-                  All fields marked with * are required. We&apos;ll confirm your
-                  appointment within 30 minutes.
-                </p>
-              </div>
-              <BookingForm />
+      {/* Modern Form Section */}
+      <section style={{ marginTop: '-60px', paddingBottom: '120px', position: 'relative', zIndex: 10 }}>
+        <div className="ds-container">
+          <div style={{ 
+            maxWidth: '800px', 
+            margin: '0 auto', 
+            backgroundColor: 'white', 
+            borderRadius: '24px', 
+            padding: '60px 48px',
+            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
+            border: '1px solid #F1F5F9'
+          }}>
+            <div style={{ marginBottom: '48px', textAlign: 'center' }}>
+              <h2 style={{ 
+                fontSize: '24px', 
+                fontWeight: '700', 
+                color: '#1B2B3A', 
+                fontFamily: 'var(--font-montserrat)', 
+                marginBottom: '12px' 
+              }}>
+                Service Booking Form
+              </h2>
+              <p style={{ 
+                fontSize: '14px', 
+                color: '#64748B', 
+                fontFamily: 'var(--font-opensans)' 
+              }}>
+                All fields marked with <span style={{ color: '#2B8A7E' }}>*</span> are required. We&apos;ll confirm your appointment within 30 minutes.
+              </p>
             </div>
 
-            {/* Trust note */}
-            <div className="mt-8 text-center">
-              <p className="text-gray-400 text-sm">
-                🔒 Your information is encrypted and never shared with third parties.
+            <BookingForm />
+
+            <div style={{ marginTop: '40px', textAlign: 'center', borderTop: '1px solid #F1F5F9', paddingTop: '32px' }}>
+              <p style={{ fontSize: '12px', color: '#94A3B8', fontFamily: 'var(--font-opensans)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px' }}>
+                <span>🔒</span> Your information is encrypted and never shared with third parties.
               </p>
             </div>
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 }

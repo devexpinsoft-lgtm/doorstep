@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React from "react";
 import { Star, Quote } from "lucide-react";
@@ -8,7 +9,7 @@ const Testimonials = () => {
   const { badge, subtitle, list } = homeData.testimonials;
 
   return (
-    <section className="ds-section" style={{ backgroundColor: 'white', padding: '100px 0' }}>
+    <section className="ds-section" id="testimonials" style={{ backgroundColor: 'white', padding: '100px 0' }}>
       <div className="ds-container">
         {/* Header with Pill Badge and Dual-Color Title */}
         <motion.div 

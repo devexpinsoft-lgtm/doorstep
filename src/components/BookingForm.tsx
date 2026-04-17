@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { CheckCircle, Loader2 } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { CheckCircle, Loader2, ArrowRight, DollarSign } from "lucide-react";
 
 const services = [
   "Home Cleaning",
@@ -37,11 +37,41 @@ const initialForm: FormData = {
   message: "",
 };
 
+// Reusable Input Component for consistent high-fidelity styling
+const FormField = ({ label, children, required }: { label: string; children: React.ReactNode; required?: boolean }) => (
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', width: '100%' }}>
+    <label style={{ 
+      fontSize: '14px', 
+      fontWeight: '600', 
+      color: '#334155', 
+      fontFamily: 'var(--font-montserrat)',
+      paddingLeft: '4px'
+    }}>
+      {label} {required && <span style={{ color: '#2B8A7E' }}>*</span>}
+    </label>
+    {children}
+  </div>
+);
+
+const inputStyle: React.CSSProperties = {
+  width: '100%',
+  padding: '14px 16px',
+  borderRadius: '12px',
+  border: '1px solid #E2E8F0',
+  fontSize: '15px',
+  fontFamily: 'var(--font-opensans)',
+  color: '#1E293B',
+  transition: 'all 0.2s ease',
+  outline: 'none',
+  backgroundColor: '#F8FAFC'
+};
+
 export default function BookingForm() {
   const [form, setForm] = useState<FormData>(initialForm);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [focusedField, setFocusedField] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -78,174 +108,273 @@ export default function BookingForm() {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="text-center py-16 px-8"
+        style={{ textAlign: 'center', padding: '40px 0' }}
       >
-        <div className="w-20 h-20 rounded-full bg-brand-gradient flex items-center justify-center mx-auto mb-6 shadow-brand-lg">
-          <CheckCircle size={36} className="text-white" />
-        </div>
-        <h3 className="text-2xl font-bold text-brand-navy font-poppins mb-3">
+        <motion.div 
+          initial={{ scale: 0 }}
+          animate={{ scale: 1, rotate: 360 }}
+          transition={{ type: "spring", stiffness: 260, damping: 20 }}
+          style={{ 
+            width: '80px', 
+            height: '80px', 
+            borderRadius: '50%', 
+            backgroundColor: '#E6F4F1', 
+            display: 'flex', 
+            alignItems: 'center', 
+            justifyContent: 'center', 
+            margin: '0 auto 32px',
+            boxShadow: '0 8px 16px rgba(43, 138, 126, 0.15)'
+          }}>
+          <CheckCircle size={40} color="#2B8A7E" strokeWidth={2.5} />
+        </motion.div>
+        
+        <h3 style={{ 
+          fontSize: '28px', 
+          fontWeight: '700', 
+          color: '#1B2B3A', 
+          fontFamily: 'var(--font-montserrat)', 
+          marginBottom: '16px' 
+        }}>
           Booking Confirmed!
         </h3>
-        <p className="text-gray-500 max-w-md mx-auto mb-6">
-          Thank you! We&apos;ve received your booking request and will contact you
-          within 30 minutes to confirm your appointment.
+        
+        <p style={{ 
+          fontSize: '16px', 
+          color: '#64748B', 
+          maxWidth: '400px', 
+          margin: '0 auto 32px',
+          fontFamily: 'var(--font-opensans)',
+          lineHeight: '24px'
+        }}>
+          Thank you! We&apos;ve received your request and our team will contact you within 30 minutes to finalize details.
         </p>
-        <button
+        
+        <motion.button
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           onClick={() => setSubmitted(false)}
-          className="btn-primary"
+          style={{ 
+            backgroundColor: '#2B8A7E', 
+            color: 'white', 
+            padding: '14px 32px', 
+            borderRadius: '10px', 
+            border: 'none', 
+            fontSize: '16px', 
+            fontWeight: '600', 
+            fontFamily: 'var(--font-montserrat)', 
+            cursor: 'pointer',
+            boxShadow: '0 10px 15px -3px rgba(43, 138, 126, 0.3)'
+          }}
         >
           Book Another Service
-        </button>
+        </motion.button>
       </motion.div>
     );
   }
 
+  const getInputStyle = (name: string) => ({
+    ...inputStyle,
+    borderColor: focusedField === name ? '#2B8A7E' : '#E2E8F0',
+    boxShadow: focusedField === name ? '0 0 0 3px rgba(43, 138, 126, 0.1)' : 'none',
+    backgroundColor: focusedField === name ? 'white' : '#F8FAFC'
+  });
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      {/* Row 1 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div>
-          <label htmlFor="name" className="form-label">Full Name *</label>
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+      
+      {/* Row 1: Name & Email */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+        <FormField label="Full Name" required>
           <input
-            id="name"
             name="name"
             type="text"
             required
             value={form.name}
+            onFocus={() => setFocusedField('name')}
+            onBlur={() => setFocusedField(null)}
             onChange={handleChange}
             placeholder="John Smith"
-            className="form-input"
+            style={getInputStyle('name')}
           />
-        </div>
-        <div>
-          <label htmlFor="email" className="form-label">Email Address *</label>
+        </FormField>
+        <FormField label="Email Address" required>
           <input
-            id="email"
             name="email"
             type="email"
             required
             value={form.email}
+            onFocus={() => setFocusedField('email')}
+            onBlur={() => setFocusedField(null)}
             onChange={handleChange}
             placeholder="john@example.com"
-            className="form-input"
+            style={getInputStyle('email')}
           />
-        </div>
+        </FormField>
       </div>
 
-      {/* Row 2 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div>
-          <label htmlFor="phone" className="form-label">Phone Number *</label>
+      {/* Row 2: Phone & Service */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+        <FormField label="Phone Number" required>
           <input
-            id="phone"
             name="phone"
             type="tel"
             required
             value={form.phone}
+            onFocus={() => setFocusedField('phone')}
+            onBlur={() => setFocusedField(null)}
             onChange={handleChange}
             placeholder="+1 (555) 000-0000"
-            className="form-input"
+            style={getInputStyle('phone')}
           />
-        </div>
-        <div>
-          <label htmlFor="serviceType" className="form-label">Service Type *</label>
+        </FormField>
+        <FormField label="Service Type" required>
           <select
-            id="serviceType"
             name="serviceType"
             required
             value={form.serviceType}
+            onFocus={() => setFocusedField('serviceType')}
+            onBlur={() => setFocusedField(null)}
             onChange={handleChange}
-            className="form-input"
+            style={{ ...getInputStyle('serviceType'), cursor: 'pointer' }}
           >
             <option value="">Select a service...</option>
             {services.map((s) => (
               <option key={s} value={s}>{s}</option>
             ))}
           </select>
-        </div>
+        </FormField>
       </div>
 
-      {/* Row 3 */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div>
-          <label htmlFor="address" className="form-label">Service Address *</label>
+      {/* Row 3: Address & Date */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+        <FormField label="Service Address" required>
           <input
-            id="address"
             name="address"
             type="text"
             required
             value={form.address}
+            onFocus={() => setFocusedField('address')}
+            onBlur={() => setFocusedField(null)}
             onChange={handleChange}
             placeholder="123 Main St, City, State"
-            className="form-input"
+            style={getInputStyle('address')}
           />
-        </div>
-        <div>
-          <label htmlFor="preferredDate" className="form-label">Preferred Date *</label>
+        </FormField>
+        <FormField label="Preferred Date" required>
           <input
-            id="preferredDate"
             name="preferredDate"
             type="date"
             required
             min={new Date().toISOString().split("T")[0]}
             value={form.preferredDate}
+            onFocus={() => setFocusedField('preferredDate')}
+            onBlur={() => setFocusedField(null)}
             onChange={handleChange}
-            className="form-input"
+            style={{ ...getInputStyle('preferredDate'), cursor: 'pointer' }}
           />
-        </div>
+        </FormField>
       </div>
 
       {/* Message */}
-      <div>
-        <label htmlFor="message" className="form-label">Additional Details</label>
+      <FormField label="Additional Details">
         <textarea
-          id="message"
           name="message"
           rows={4}
           value={form.message}
+          onFocus={() => setFocusedField('message')}
+          onBlur={() => setFocusedField(null)}
           onChange={handleChange}
-          placeholder="Describe what you need help with..."
-          className="form-input resize-none"
+          placeholder="Describe what you need help with (optional)..."
+          style={{ ...getInputStyle('message'), resize: 'none' }}
         />
-      </div>
+      </FormField>
 
-      {/* Payment Placeholder Notice */}
-      <div className="flex items-center gap-3 p-4 rounded-xl bg-blue-50 border border-blue-100">
-        <div className="w-5 h-5 rounded-full bg-brand-blue flex items-center justify-center flex-shrink-0">
-          <span className="text-white text-xs font-bold">$</span>
+      {/* Modern Notice */}
+      <div style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        gap: '16px', 
+        padding: '16px 20px', 
+        borderRadius: '14px', 
+        backgroundColor: '#F0F9FF', 
+        border: '1px solid #BAE6FD' 
+      }}>
+        <div style={{ 
+          width: '32px', 
+          height: '32px', 
+          borderRadius: '50%', 
+          backgroundColor: '#0EA5E9', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center',
+          flexShrink: 0
+        }}>
+          <DollarSign size={18} color="white" />
         </div>
-        <p className="text-sm text-brand-blue font-medium">
-          Secure payment powered by Stripe — coming soon. No payment required to book.
+        <p style={{ fontSize: '13px', color: '#0369A1', fontFamily: 'var(--font-opensans)', fontWeight: '500', lineHeight: '1.5' }}>
+          Secure payment powered by Stripe — coming soon. No payment required to book today.
         </p>
       </div>
 
-      {/* Error */}
-      {error && (
-        <p className="text-red-500 text-sm bg-red-50 px-4 py-3 rounded-xl border border-red-100">
-          {error}
-        </p>
-      )}
+      {/* Error Message */}
+      <AnimatePresence>
+        {error && (
+          <motion.p 
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            style={{ 
+              color: '#DC2626', 
+              fontSize: '14px', 
+              backgroundColor: '#FEF2F2', 
+              padding: '12px 16px', 
+              borderRadius: '10px', 
+              border: '1px solid #FEE2E2',
+              fontFamily: 'var(--font-opensans)'
+            }}
+          >
+            {error}
+          </motion.p>
+        )}
+      </AnimatePresence>
 
-      {/* Submit */}
-      <button
+      {/* Submit Button */}
+      <motion.button
         type="submit"
         disabled={loading}
-        className="btn-primary w-full justify-center py-4 text-base disabled:opacity-70 disabled:cursor-not-allowed"
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.99 }}
+        style={{
+          backgroundColor: '#2B8A7E',
+          color: 'white',
+          padding: '18px 32px',
+          borderRadius: '12px',
+          border: 'none',
+          fontSize: '16px',
+          fontWeight: '700',
+          fontFamily: 'var(--font-montserrat)',
+          cursor: loading ? 'not-allowed' : 'pointer',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '12px',
+          boxShadow: '0 20px 25px -5px rgba(43, 138, 126, 0.2)',
+          transition: 'all 0.3s ease',
+          opacity: loading ? 0.7 : 1
+        }}
       >
         {loading ? (
           <>
             <Loader2 size={20} className="animate-spin" />
-            Processing Booking...
+            <span>Processing Booking...</span>
           </>
         ) : (
           <>
-            Confirm My Booking
-            <svg viewBox="0 0 20 20" fill="none" className="w-5 h-5">
-              <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
+            <span>Confirm My Booking</span>
+            <ArrowRight size={20} />
           </>
         )}
-      </button>
+      </motion.button>
     </form>
   );
 }

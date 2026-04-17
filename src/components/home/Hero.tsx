@@ -1,20 +1,39 @@
 "use client";
 import React from "react";
-import { Check, ArrowRight, Shield, Clock, CheckCircle, Star } from "lucide-react";
+import { Check, ArrowRight, Shield, Clock, CheckCircle, Star, LucideIcon } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import CountUp from "../ui/CountUp";
 import homeData from "../../data/home.json";
 
-const iconMap: any = {
+const iconMap: Record<string, LucideIcon> = {
   Star,
   CheckCircle,
   Shield,
   Clock
 };
 
+interface HeroStat {
+  id: string;
+  val: number;
+  label: string;
+  icon: string;
+  suffix?: string;
+  decimals?: number;
+}
+
+interface HeroChecklist {
+  label: string;
+  size: string;
+}
+
+interface HeroTrust {
+  icon: string;
+  label: string;
+}
+
 const Hero = () => {
-  const { titleLine1, titleLine2, subtitle, checklist, description, ctaText, stats, trustBar } = homeData.hero;
+  const { titleLine1, titleLine2, subtitle, checklist, description, ctaText, stats, trustBar, image } = homeData.hero;
 
   return (
     <section className="ds-section" style={{ paddingTop: '160px', paddingBottom: '0', backgroundColor: 'var(--bg-main)', position: 'relative', overflow: 'hidden' }}>
@@ -63,7 +82,7 @@ const Hero = () => {
             </p>
             
             <ul style={{ listStyle: 'none', marginBottom: '40px', padding: 0 }}>
-              {checklist.map((item: any, idx: number) => (
+              {(checklist as HeroChecklist[]).map((item, idx) => (
                 <motion.li 
                   key={idx} 
                   initial={{ opacity: 0, x: -10 }}
@@ -157,7 +176,7 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Image with Overlays */}
+          {/* Right Image with PREMIUM Overlays and Effects */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -166,16 +185,25 @@ const Hero = () => {
           >
             <motion.div 
               whileHover="hover"
-              style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.12)', position: 'relative', cursor: 'pointer' }}
+              style={{ 
+                borderRadius: '24px', 
+                overflow: 'hidden', 
+                boxShadow: '0 30px 60px rgba(0,0,0,0.12)', 
+                position: 'relative',
+                cursor: 'pointer'
+              }}
+              variants={{
+                hover: { scale: 1.02, boxShadow: '0 40px 80px rgba(43, 138, 126, 0.2)' }
+              }}
             >
               <motion.div
                 variants={{
-                  hover: { scale: 1.05, filter: 'saturate(1.1) brightness(1.05)' }
+                  hover: { filter: 'saturate(1.1) brightness(1.05)' }
                 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                transition={{ duration: 0.4 }}
               >
                 <Image 
-                  src="/images/hero-handyman.png" 
+                  src={image} 
                   alt="Professional handyman standing in front of doors" 
                   width={527} 
                   height={377}
@@ -183,19 +211,20 @@ const Hero = () => {
                   priority
                 />
               </motion.div>
-              {/* Shine Sweep */}
+
+              {/* Shine Effect Overlay */}
               <motion.div
                 variants={{
                   hover: { x: ['-100%', '200%'] }
                 }}
-                transition={{ duration: 1, ease: "easeInOut" }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
                 style={{
                   position: 'absolute',
                   top: 0,
                   left: 0,
-                  width: '50%',
+                  width: '60%',
                   height: '100%',
-                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
+                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
                   transform: 'skewX(-25deg)',
                   zIndex: 2,
                   pointerEvents: 'none'
@@ -204,7 +233,7 @@ const Hero = () => {
             </motion.div>
             
             {/* Stat Cards from JSON mapping */}
-            {stats.map((stat: any, idx: number) => {
+            {(stats as HeroStat[]).map((stat, idx) => {
               const Icon = iconMap[stat.icon];
               const isTop = stat.id === 'rating';
               return (
@@ -252,7 +281,7 @@ const Hero = () => {
         style={{ width: '100%', marginTop: '100px', backgroundColor: '#F4F7FB', borderTop: '1px solid #E0E5EB', padding: '24px 0' }}
       >
         <div className="ds-container ds-flex ds-justify-between ds-items-center" style={{ flexWrap: 'wrap', gap: '32px' }}>
-          {trustBar.map((item: any, idx: number) => {
+          {(trustBar as HeroTrust[]).map((item, idx) => {
             const Icon = iconMap[item.icon];
             return (
               <motion.div 

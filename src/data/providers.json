@@ -1,0 +1,66 @@
+{
+  "hero": {
+    "badge": "FOR PROVIDERS",
+    "titleLine1": "Work",
+    "titleLine2": "with Doorstep",
+    "description": "Join our network of vetted professionals. We bring the customers, you do what you do best.",
+    "ctaText": "Apply Now",
+    "image": "/images/providers-hero.png"
+  },
+  "features": {
+    "title": "Why providers love",
+    "highlight": "Doorstep",
+    "list": [
+      {
+        "icon": "DollarSign",
+        "title": "Competitive Pay",
+        "desc": "Earn top rates with transparent pricing and no hidden fees."
+      },
+      {
+        "icon": "Calendar",
+        "title": "Flexible Schedule",
+        "desc": "Work when you want. Accept jobs that fit your availability."
+      },
+      {
+        "icon": "Users",
+        "title": "Steady Customers",
+        "desc": "We bring the customers to you, no more chasing leads."
+      },
+      {
+        "icon": "Star",
+        "title": "Build Your Reputation",
+        "desc": "Earn reviews and grow your business through our platform."
+      }
+    ]
+  },
+  "howItWorks": {
+    "title": "How It",
+    "highlight": "Works",
+    "steps": [
+      {
+        "step": "Step 1",
+        "title": "Apply",
+        "desc": "Fill out a quick application with your skills and experience.",
+        "icon": "ClipboardList"
+      },
+      {
+        "step": "Step 2",
+        "title": "Get Approved",
+        "desc": "We verify your background and qualifications.",
+        "icon": "UserCheck"
+      },
+      {
+        "step": "Step 3",
+        "title": "Start Earning",
+        "desc": "Begin receiving jobs and get paid reliably.",
+        "icon": "CheckCircle"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to join the Doorstep team?",
+    "description": "We're always looking for skilled, reliable professionals to join our growing network.",
+    "buttonText": "Apply Today",
+    "image": "/imagescta.png"
+  }
+}
