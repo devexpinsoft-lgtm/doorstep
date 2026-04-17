@@ -29,7 +29,7 @@ const CTA = () => {
         style={{ 
           position: 'absolute', 
           inset: 0, 
-          backgroundImage: 'url("/images/image%2022.png")',
+          backgroundImage: 'url("/images/family-happy.png")',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           zIndex: 0
@@ -61,16 +61,20 @@ const CTA = () => {
            viewport={{ once: true }}
            transition={{ duration: 0.8 }}
         >
-          <h2 style={{ 
-            fontSize: '36px', 
-            fontWeight: '700', 
-            color: 'white', 
-            marginBottom: '24px', 
-            fontFamily: 'var(--font-montserrat)',
-            lineHeight: '1.2'
-          }}>
+          <motion.h2 
+            whileHover={{ y: -3, textShadow: '0 0 20px rgba(255, 255, 255, 0.4)' }}
+            style={{ 
+              fontSize: '42px', 
+              fontWeight: '900', 
+              color: 'white', 
+              marginBottom: '24px', 
+              fontFamily: 'var(--font-montserrat)',
+              lineHeight: '1.1',
+              cursor: 'default',
+              display: 'inline-block'
+            }}>
             {title.split(" home?")[0]} home?
-          </h2>
+          </motion.h2>
           <p style={{ 
             fontSize: '16px', 
             color: 'rgba(255,255,255,0.9)', 

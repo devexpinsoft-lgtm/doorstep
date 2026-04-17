@@ -36,9 +36,14 @@ const WhyDoorstep = () => {
           }}>
             <span style={{ fontSize: '11px', fontWeight: '600', color: '#2B8A7E', fontFamily: 'var(--font-opensans)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{badge}</span>
           </div>
-          <h2 style={{ fontSize: '30px', fontWeight: '700', marginBottom: '16px', fontFamily: 'var(--font-montserrat)', lineHeight: '36px', color: '#1B2B3A' }}>
-            {title}
-          </h2>
+          <div style={{ width: '100%' }}>
+            <motion.h2 
+              whileHover={{ y: -3, textShadow: '0 0 15px rgba(43, 138, 126, 0.3)' }}
+              style={{ fontSize: '30px', fontWeight: '700', marginBottom: '16px', fontFamily: 'var(--font-montserrat)', lineHeight: '36px', color: '#1B2B3A', cursor: 'default', display: 'inline-block' }}
+            >
+              {title}
+            </motion.h2>
+          </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <p style={{ fontSize: '13.85px', lineHeight: '20px', color: '#6B7280', fontFamily: 'var(--font-montserrat)', maxWidth: '653px', fontWeight: '400' }}>
                {subtitle}
@@ -57,12 +62,7 @@ const WhyDoorstep = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.4 }}
-                whileHover={{ 
-                  y: -10, 
-                  backgroundColor: "#F9FBFC",
-                  borderColor: "var(--primary-light)",
-                  boxShadow: "0 25px 50px -12px rgba(43, 138, 126, 0.12)"
-                }}
+                whileHover="hover"
                 className="ds-card" 
                 style={{ 
                   padding: '40px 24px', 
@@ -71,35 +71,52 @@ const WhyDoorstep = () => {
                   flexDirection: 'column', 
                   alignItems: 'center', 
                   minHeight: '220px', 
-                  transition: 'all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1)',
+                  transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                   backgroundColor: '#FFFFFF',
-                  borderRadius: '8px'
+                  borderRadius: '16px',
+                  border: '1px solid #F1F5F9'
+                }}
+                variants={{
+                  hover: { 
+                    y: -12, 
+                    backgroundColor: "#FFFFFF",
+                    borderColor: "#2B8A7E",
+                    boxShadow: "0 25px 50px -12px rgba(43, 138, 126, 0.15)"
+                  }
                 }}
               >
-                <div 
+                <motion.div 
+                  variants={{
+                    hover: { y: -5, scale: 1.1, backgroundColor: '#2B8A7E', color: '#FFFFFF' }
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   style={{ 
-                    width: '42px', 
-                    height: '43px', 
+                    width: '52px', 
+                    height: '52px', 
                     backgroundColor: '#E9F5F3', 
-                    borderRadius: '10px', 
+                    borderRadius: '14px', 
                     display: 'flex', 
                     alignItems: 'center', 
                     justifyContent: 'center', 
                     marginBottom: '24px',
-                    color: 'var(--primary)',
-                    flexShrink: 0
+                    color: '#2B8A7E',
+                    flexShrink: 0,
+                    transition: 'all 0.3s ease'
                   }}
                 >
-                  {Icon && <Icon size={24} />}
-                </div>
-                <h3 style={{ marginBottom: '16px', fontSize: '14px', fontWeight: '600', color: '#111827', fontFamily: 'var(--font-montserrat)', lineHeight: '20px' }}>
+                  {Icon && <Icon size={26} />}
+                </motion.div>
+                <motion.h3 
+                  variants={{ hover: { color: '#2B8A7E' } }}
+                  style={{ marginBottom: '16px', fontSize: '16px', fontWeight: '700', color: '#111827', fontFamily: 'var(--font-montserrat)', lineHeight: '20px' }}
+                >
                   {reason.title}
-                </h3>
+                </motion.h3>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                   {reason.desc.map((line, lidx) => (
                     <p key={lidx} style={{ 
-                      fontSize: '12px', 
-                      lineHeight: '19px', 
+                      fontSize: '13px', 
+                      lineHeight: '20px', 
                       color: '#6B7280', 
                       fontFamily: 'var(--font-roboto)', 
                       textAlign: 'center',

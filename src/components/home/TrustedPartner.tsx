@@ -13,7 +13,7 @@ const iconMap: any = {
 };
 
 const TrustedPartner = () => {
-  const { badge, title, description, stats, benefits } = homeData.trustedPartner;
+  const { badge, title, description, image, stats, benefits } = homeData.trustedPartner;
 
   return (
     <section className="ds-section" style={{ backgroundColor: '#F4F7FB', overflow: 'hidden', padding: '100px 0' }}>
@@ -38,9 +38,14 @@ const TrustedPartner = () => {
             }}>
               <span style={{ fontSize: '11px', fontWeight: '600', color: '#2B8A7E', fontFamily: 'var(--font-opensans)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{badge}</span>
             </div>
-            <h2 style={{ fontSize: '30px', fontWeight: '700', lineHeight: '36px', marginBottom: '16px', fontFamily: 'var(--font-montserrat)', color: '#1B2B3A' }}>
-              {title}
-            </h2>
+            <div style={{ width: '100%' }}>
+              <motion.h2 
+                whileHover={{ y: -3, textShadow: '0 0 15px rgba(43, 138, 126, 0.3)' }}
+                style={{ fontSize: '30px', fontWeight: '700', lineHeight: '36px', marginBottom: '16px', fontFamily: 'var(--font-montserrat)', color: '#1B2B3A', cursor: 'default', display: 'inline-block' }}
+              >
+                {title}
+              </motion.h2>
+            </div>
             <p style={{ fontSize: '12px', lineHeight: '21px', color: '#6B7A8F', marginBottom: '40px', maxWidth: '471px', fontFamily: 'var(--font-opensans)', fontWeight: '400' }}>
                {description}
             </p>
@@ -87,14 +92,41 @@ const TrustedPartner = () => {
               whileInView={{ opacity: 1, filter: "blur(0px)" }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}
+              whileHover="hover"
+              style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', position: 'relative', cursor: 'pointer' }}
             >
-              <Image 
-                src="/images/image%2019.png" 
-                alt="Modern living room interior" 
-                width={537} 
-                height={213}
-                style={{ width: '100%', height: 'auto', display: 'block' }}
+              <motion.div
+                variants={{
+                  hover: { scale: 1.05, filter: 'saturate(1.1) brightness(1.05)' }
+                }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                style={{ width: '100%', height: '100%' }}
+              >
+                <Image 
+                  src={image} 
+                  alt={title} 
+                  width={537} 
+                  height={213}
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                />
+              </motion.div>
+              {/* Shine Sweep */}
+              <motion.div
+                variants={{
+                  hover: { x: ['-100%', '200%'] }
+                }}
+                transition={{ duration: 1.2, ease: "easeInOut" }}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '50%',
+                  height: '100%',
+                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent)',
+                  transform: 'skewX(-25deg)',
+                  zIndex: 2,
+                  pointerEvents: 'none'
+                }}
               />
             </motion.div>
 
@@ -108,27 +140,55 @@ const TrustedPartner = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 + idx * 0.08, duration: 0.4 }}
-                    whileHover={{ x: 5, backgroundColor: "#FFFFFF", borderColor: "var(--primary)" }}
+                    whileHover="hover"
                     style={{ 
                       backgroundColor: 'white', 
                       border: '1px solid #E0E5EB', 
-                      borderRadius: '8px', 
+                      borderRadius: '12px', 
                       padding: '24px', 
                       display: 'flex', 
                       alignItems: 'center', 
                       gap: '24px',
-                      cursor: 'default',
+                      cursor: 'pointer',
                       boxShadow: '0 4px 10px rgba(0,0,0,0.03)',
-                      transition: 'all 0.2s ease',
-                      height: '84px'
+                      transition: 'all 0.3s ease',
+                      height: '96px'
+                    }}
+                    variants={{
+                      hover: { 
+                        x: 8, 
+                        borderColor: "#2B8A7E",
+                        boxShadow: '0 12px 24px rgba(43, 138, 126, 0.08)' 
+                      }
                     }}
                   >
-                    <div style={{ width: '48px', height: '48px', backgroundColor: '#E9F5F3', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: 'var(--primary)' }}>
-                      {Icon && <Icon size={20} />}
-                    </div>
+                    <motion.div 
+                      variants={{
+                        hover: { scale: 1.15, rotate: 10, backgroundColor: '#2B8A7E', color: '#FFFFFF' }
+                      }}
+                      style={{ 
+                        width: '52px', 
+                        height: '52px', 
+                        backgroundColor: '#E9F5F3', 
+                        borderRadius: '14px', 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        justifyContent: 'center', 
+                        flexShrink: 0, 
+                        color: '#2B8A7E',
+                        transition: 'all 0.3s ease'
+                      }}
+                    >
+                      {Icon && <Icon size={24} />}
+                    </motion.div>
                     <div>
-                      <h4 style={{ fontSize: '14px', fontWeight: '600', marginBottom: '4px', color: '#1B2B3A', fontFamily: 'var(--font-montserrat)' }}>{item.title}</h4>
-                      <p style={{ fontSize: '11px', lineHeight: '16px', color: '#6B7A8F', fontFamily: 'var(--font-opensans)', fontWeight: '400' }}>{item.desc}</p>
+                      <motion.h4 
+                        variants={{ hover: { color: '#2B8A7E' } }}
+                        style={{ fontSize: '15px', fontWeight: '700', marginBottom: '4px', color: '#1B2B3A', fontFamily: 'var(--font-montserrat)' }}
+                      >
+                        {item.title}
+                      </motion.h4>
+                      <p style={{ fontSize: '12px', lineHeight: '18px', color: '#6B7A8F', fontFamily: 'var(--font-opensans)', fontWeight: '400' }}>{item.desc}</p>
                     </div>
                   </motion.div>
                 );

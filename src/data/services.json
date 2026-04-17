@@ -1,0 +1,66 @@
+{
+  "header": {
+    "badge": "OUR SERVICES",
+    "title": "Our Focus",
+    "description": "We focus on doing a few services extremely well to ensure consistency and quality."
+  },
+  "mainServices": [
+    {
+      "id": "lawn-care",
+      "title": "Lawn Care",
+      "icon": "Tree",
+      "description": "Our professional lawn care service covers everything your yard needs to look its best.",
+      "features": [
+        "Mowing & cutting to the right height",
+        "Edging along driveways & walkways",
+        "Trimming around obstacles",
+        "Full yard cleanup & debris removal"
+      ],
+      "image": "/images/lawn-care-hero.png",
+      "buttonText": "Book Now",
+      "buttonLink": "/book?service=lawn-care"
+    },
+    {
+      "id": "home-cleaning",
+      "title": "Home Cleaning",
+      "icon": "Sparkles",
+      "description": "Professional cleaning services for every corner of your home, ensuring a spotless and healthy environment.",
+      "features": [
+        "Dusting all surfaces & furniture",
+        "Vacuuming & mopping floors",
+        "Bathroom sanitization",
+        "Kitchen deep cleaning",
+        "Optional deep clean add-on"
+      ],
+      "image": "/images/home-cleaning-hero.png",
+      "buttonText": "Book Now",
+      "buttonLink": "/book?service=home-cleaning",
+      "bgColor": "#f0fdfa"
+    }
+  ],
+  "futureServices": {
+    "badge": "Coming Soon",
+    "title": "Future Services",
+    "description": "We're expanding! These services are coming to Doorstep soon.",
+    "services": [
+      {
+        "title": "Plumbing",
+        "icon": "Droplets",
+        "price": "From $100",
+        "image": "/images/cleaning-service.png"
+      },
+      {
+        "title": "Electrical",
+        "icon": "Zap",
+        "price": "From $90",
+        "image": "/images/electrician-service.png"
+      },
+      {
+        "title": "Haircuts",
+        "icon": "Scissors",
+        "price": "From $40",
+        "image": "/images/barber-service.png"
+      }
+    ]
+  }
+}

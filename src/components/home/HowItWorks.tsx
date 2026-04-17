@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { MousePointer2, UserCheck, CheckCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import homeData from "../../data/home.json";
@@ -35,10 +35,15 @@ const HowItWorks = () => {
           }}>
             <span style={{ fontSize: '11px', fontWeight: '600', color: '#2B8A7E', fontFamily: 'var(--font-opensans)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{badge}</span>
           </div>
-          <h2 style={{ fontSize: '30px', fontWeight: '700', marginBottom: '16px', fontFamily: 'var(--font-montserrat)', color: '#1B2B3A', lineHeight: '36px' }}>
-            {title}
-          </h2>
-          <p style={{ fontSize: '14px', fontWeight: '400', color: '#6B7A8F', fontFamily: 'var(--font-montserrat)', maxWidth: '569px', margin: '0 auto', lineHeight: '16px' }}>
+          <div style={{ width: '100%' }}>
+            <motion.h2 
+              whileHover={{ y: -3, textShadow: '0 0 15px rgba(43, 138, 126, 0.3)' }}
+              style={{ fontSize: '30px', fontWeight: '700', marginBottom: '16px', fontFamily: 'var(--font-montserrat)', color: '#1B2B3A', lineHeight: '36px', cursor: 'default', display: 'inline-block' }}
+            >
+              {title}
+            </motion.h2>
+          </div>
+          <p style={{ fontSize: '14.5px', fontWeight: '500', color: '#6B7A8F', fontFamily: 'var(--font-opensans)', maxWidth: '569px', margin: '0 auto', lineHeight: '1.6' }}>
             {description}
           </p>
         </motion.div>
@@ -49,7 +54,6 @@ const HowItWorks = () => {
           <div style={{ position: 'absolute', top: '24%', left: '15%', right: '15%', height: '1px', backgroundColor: '#F0F4F8', zIndex: 0 }} />
 
           {steps.map((step, idx) => {
-            const [isHovered, setIsHovered] = useState(false);
             const Icon = iconMap[step.icon];
 
             return (
@@ -59,13 +63,7 @@ const HowItWorks = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.4 }}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-                whileHover={{ 
-                  y: -10, 
-                  backgroundColor: "#F9FBFC",
-                  boxShadow: "0 25px 50px -12px rgba(43, 138, 126, 0.12)"
-                }}
+                whileHover="hover"
                 className="ds-card" 
                 style={{ 
                   padding: '40px 24px', 
@@ -73,52 +71,75 @@ const HowItWorks = () => {
                   display: 'flex', 
                   flexDirection: 'column', 
                   alignItems: 'center', 
-                  minHeight: '168px',
+                  minHeight: '220px',
                   zIndex: 1,
-                  transition: 'all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1)',
-                  borderRadius: '8px',
-                  border: '1px solid #E5E7EB',
-                  backgroundColor: '#FFFFFF'
+                  transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                  borderRadius: '16px',
+                  border: '1px solid #F1F5F9',
+                  backgroundColor: '#FFFFFF',
+                  position: 'relative',
+                  overflow: 'hidden'
+                }}
+                variants={{
+                  hover: { 
+                    y: -12, 
+                    borderColor: "#2B8A7E",
+                    boxShadow: "0 25px 50px -12px rgba(43, 138, 126, 0.15)"
+                  }
                 }}
               >
-                <div 
+                <motion.div 
+                  variants={{
+                    hover: { scale: 1.15, backgroundColor: '#2B8A7E', color: '#FFFFFF' }
+                  }}
                   style={{ 
-                    width: '42px', 
-                    height: '43px', 
-                    backgroundColor: isHovered ? 'var(--primary)' : '#E9F5F3', 
-                    borderRadius: '10px', 
+                    width: '52px', 
+                    height: '52px', 
+                    backgroundColor: '#E9F5F3', 
+                    borderRadius: '14px', 
                     display: 'flex', 
                     alignItems: 'center', 
                     justifyContent: 'center', 
                     marginBottom: '24px',
-                    color: isHovered ? 'white' : 'var(--primary)',
+                    color: '#2B8A7E',
                     flexShrink: 0,
-                    transition: 'all 0.4s ease'
+                    transition: 'all 0.3s ease'
                   }}
                 >
-                  {Icon && <Icon size={24} />}
-                </div>
-                <h3 style={{ 
-                  marginBottom: '16px', 
-                  fontSize: '14px', 
-                  fontWeight: '600', 
-                  color: isHovered ? 'var(--primary)' : '#1B2B3A', 
-                  fontFamily: 'var(--font-montserrat)',
-                  transition: 'color 0.4s ease',
-                  lineHeight: '20px'
-                }}>
+                  {Icon && <Icon size={26} />}
+                </motion.div>
+                <motion.h3 
+                  variants={{ hover: { color: '#2B8A7E' } }}
+                  style={{ 
+                    marginBottom: '16px', 
+                    fontSize: '16px', 
+                    fontWeight: '700', 
+                    color: '#1B2B3A', 
+                    fontFamily: 'var(--font-montserrat)',
+                    transition: 'color 0.4s ease',
+                    lineHeight: '20px'
+                  }}
+                >
                   {step.title}
-                </h3>
-                <p style={{ fontSize: '11px', lineHeight: '16px', color: '#6B7A8F', fontFamily: 'var(--font-opensans)', maxWidth: '270px', fontWeight: '400' }}>
+                </motion.h3>
+                <p style={{ fontSize: '12px', lineHeight: '20px', color: '#6B7A8F', fontFamily: 'var(--font-opensans)', maxWidth: '270px', fontWeight: '400' }}>
                   {step.desc}
                 </p>
                 
-                {isHovered && (
-                  <motion.div 
-                    layoutId="glow"
-                    style={{ position: 'absolute', bottom: '0', left: '10%', right: '10%', height: '3px', backgroundColor: 'var(--primary)', borderRadius: '3px 3px 0 0' }}
-                  />
-                )}
+                <motion.div 
+                  variants={{
+                    initial: { width: 0, opacity: 0 },
+                    hover: { width: '80%', opacity: 1 }
+                  }}
+                  style={{ 
+                    position: 'absolute', 
+                    bottom: '0', 
+                    left: '10%', 
+                    height: '4px', 
+                    backgroundColor: '#2B8A7E', 
+                    borderRadius: '4px 4px 0 0' 
+                  }}
+                />
               </motion.div>
             );
           })}

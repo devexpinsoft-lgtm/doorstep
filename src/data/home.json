@@ -1,7 +1,7 @@
 {
   "navbar": {
     "links": [
-      { "name": "Services", "href": "#services", "size": "13.22px" },
+      { "name": "Services", "href": "/services", "size": "13.22px" },
       { "name": "Pricing", "href": "#pricing", "size": "13.38px" },
       { "name": "Providers", "href": "#providers", "size": "13.77px" },
       { "name": "About", "href": "#about", "size": "14px" }
@@ -83,6 +83,7 @@
     "badge": "ABOUT US",
     "title": "Your trusted partner for home services",
     "description": "Doorstep was founded with a simple mission: make it effortless to find reliable, affordable home service professionals. We’ve helped thousands of homeowners get the help they need from leaky faucets to full home makeovers.",
+    "image": "/images/clean-living-room.png",
     "stats": [
       { "val": 10, "suffix": "K+", "label": "Jobs Completed" },
       { "val": 500, "suffix": "+", "label": "Verified Pros" },
@@ -103,13 +104,13 @@
         "name": "Lawn Care", 
         "price": "From $45", 
         "icon": "Trees", 
-        "image": "/images/image%2020.png" 
+        "image": "/images/lawn-mowing.png" 
       },
       { 
         "name": "Home Cleaning", 
         "price": "From $95", 
         "icon": "Sparkles", 
-        "image": "/images/image%2021.png" 
+        "image": "/images/cleaning-service.png" 
       }
     ]
   },
@@ -203,10 +204,10 @@
       {
         "title": "Services",
         "items": [
-          { "name": "Lawn Care", "href": "#" },
-          { "name": "Cleaning", "href": "#" },
-          { "name": "Plumbing", "href": "#" },
-          { "name": "Electrical", "href": "#" }
+          { "name": "Lawn Care", "href": "/services#lawn-care" },
+          { "name": "Cleaning", "href": "/services#home-cleaning" },
+          { "name": "Plumbing", "href": "/services" },
+          { "name": "Electrical", "href": "/services" }
         ]
       },
       {

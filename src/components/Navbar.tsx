@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import homeData from "../data/home.json";
 
 const Navbar = () => {
@@ -24,12 +25,12 @@ const Navbar = () => {
         top: 0,
         left: 0,
         right: 0,
-        height: '88px',
+        height: '68px',
         zIndex: 1000,
-        backgroundColor: isScrolled ? 'rgba(255, 255, 255, 0.9)' : 'transparent',
-        backdropFilter: isScrolled ? 'blur(10px)' : 'none',
+        backgroundColor: 'rgba(255, 255, 255, 1)',
+        backdropFilter: 'blur(10px)',
         transition: 'all 0.3s ease',
-        borderBottom: isScrolled ? '1px solid #D9E2EC' : 'none'
+        borderBottom: '1px solid #D9E2EC'
       }}
     >
       <div className="ds-container ds-flex ds-justify-between ds-items-center" style={{ height: '100%', position: 'relative' }}>
@@ -38,15 +39,16 @@ const Navbar = () => {
         <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
           <motion.div 
             whileHover={{ scale: 1.05 }}
-            style={{ 
-              fontSize: '24px', 
-              fontWeight: '800', 
-              color: 'var(--primary)', 
-              fontFamily: 'var(--font-montserrat)',
-              marginTop: '10px'
-            }}
+            style={{ display: 'flex', alignItems: 'center' }}
           >
-            Doorstep
+            <Image 
+              src="/logo_cropped.png" 
+              alt="Doorstep Logo" 
+              width={90} 
+              height={90}
+              style={{ objectFit: 'contain' }}
+              priority
+            />
           </motion.div>
         </Link>
 
@@ -60,8 +62,7 @@ const Navbar = () => {
           gap: '32px',
           fontFamily: 'var(--font-montserrat)',
           fontWeight: '500', 
-          color: '#374151',
-          marginTop: '10px'
+          color: '#374151'
         }}>
           {links.map((link) => (
             <Link key={link.name} href={link.href} style={{ textDecoration: 'none', position: 'relative' }}>
@@ -99,8 +100,7 @@ const Navbar = () => {
             fontWeight: '600',
             fontFamily: 'var(--font-opensans)',
             textDecoration: 'none',
-            boxShadow: '0px 1px 6px rgba(0, 0, 0, 0.15)',
-            marginTop: '10px'
+            boxShadow: '0px 1px 6px rgba(0, 0, 0, 0.15)'
           }}
         >
           {cta}

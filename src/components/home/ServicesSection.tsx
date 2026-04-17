@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Trees, Sparkles, ArrowRight } from "lucide-react";
@@ -52,17 +52,21 @@ const ServicesSection = () => {
           }}>
             <span style={{ fontSize: '11px', fontWeight: '600', color: '#2B8A7E', fontFamily: 'var(--font-opensans)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{badge}</span>
           </div>
-          <h2 style={{ fontSize: '24px', fontWeight: '700', color: '#1B2B3A', marginBottom: '12px', fontFamily: 'var(--font-montserrat)', lineHeight: '32px' }}>
-            {title}
-          </h2>
-          <p style={{ fontSize: '12px', fontWeight: '400', color: '#6B7A8F', fontFamily: 'var(--font-opensans)', lineHeight: '16px' }}>
+          <div style={{ width: '100%' }}>
+            <motion.h2 
+              whileHover={{ y: -3, textShadow: '0 0 15px rgba(43, 138, 126, 0.3)' }}
+              style={{ fontSize: '24px', fontWeight: '700', color: '#1B2B3A', marginBottom: '12px', fontFamily: 'var(--font-montserrat)', lineHeight: '32px', cursor: 'default', display: 'inline-block' }}
+            >
+              {title}
+            </motion.h2>
+          </div>
+          <p style={{ fontSize: '13.5px', fontWeight: '500', color: '#6B7A8F', fontFamily: 'var(--font-opensans)', lineHeight: '1.6' }}>
             {subtitle}
           </p>
         </motion.div>
         
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '40px', maxWidth: '1000px', margin: '0 auto' }}>
           {list.map((service, idx) => {
-            const [isHovered, setIsHovered] = useState(false);
             const Icon = iconMap[service.icon];
 
             return (
@@ -72,29 +76,28 @@ const ServicesSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.15, duration: 0.6 }}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
+                whileHover="hover"
               >
-                <Link href="#" style={{ textDecoration: 'none' }}>
+                <Link href="/services" style={{ textDecoration: 'none' }}>
                   <motion.div 
-                    whileHover={{ 
-                      y: -15,
-                      boxShadow: "0 30px 60px rgba(43, 138, 126, 0.15)",
+                    variants={{
+                      hover: { y: -15, boxShadow: "0 30px 60px rgba(43, 138, 126, 0.15)", borderColor: "#2B8A7E" }
                     }}
                     style={{ 
                       overflow: 'hidden',
                       display: 'flex', 
                       flexDirection: 'column', 
-                      border: isHovered ? '2px solid var(--primary)' : '1px solid #E5E7EB',
+                      border: '1px solid #E5E7EB',
                       borderRadius: '24px',
-                      transition: 'all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1)',
+                      transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                       backgroundColor: 'white',
-                      height: '420px'
+                      height: '420px',
+                      position: 'relative'
                     }}
                   >
                     <div style={{ position: 'relative', height: '240px', width: '100%', overflow: 'hidden' }}>
                       <motion.div
-                        animate={{ scale: isHovered ? 1.1 : 1 }}
+                        variants={{ hover: { scale: 1.1, filter: 'saturate(1.1) brightness(1.05)' } }}
                         transition={{ duration: 1.2, ease: "easeOut" }}
                         style={{ width: '100%', height: '100%', position: 'relative' }}
                       >
@@ -105,48 +108,70 @@ const ServicesSection = () => {
                           style={{ objectFit: 'cover' }}
                         />
                         <motion.div 
+                          variants={{ hover: { opacity: 0.2 } }}
                           initial={{ opacity: 0 }}
-                          animate={{ opacity: isHovered ? 0.3 : 0 }}
-                          style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, var(--primary), transparent)' }}
+                          style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, #2B8A7E, transparent)', pointerEvents: 'none' }}
                         />
                       </motion.div>
+                      {/* Shine Sweep */}
+                      <motion.div
+                        variants={{
+                          hover: { x: ['-100%', '200%'] }
+                        }}
+                        transition={{ duration: 1, ease: "easeInOut" }}
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          width: '50%',
+                          height: '100%',
+                          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
+                          transform: 'skewX(-25deg)',
+                          zIndex: 2,
+                          pointerEvents: 'none'
+                        }}
+                      />
                     </div>
 
                     <div style={{ padding: '32px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', flex: 1, justifyContent: 'center' }}>
-                      <div 
+                      <motion.div 
+                        variants={{ hover: { scale: 1.25, rotate: 10, color: '#2B8A7E' } }}
                         style={{ 
-                          color: isHovered ? 'var(--primary)' : '#2B8A7E', 
+                          color: '#2B8A7E', 
                           marginBottom: '16px',
-                          transform: isHovered ? 'scale(1.2)' : 'scale(1)',
                           transition: 'all 0.4s ease'
                         }}
                       >
                         {Icon && <Icon size={24} />}
-                      </div>
-                      <h3 style={{ 
-                        fontSize: '18px', 
-                        fontWeight: '700', 
-                        color: isHovered ? 'var(--primary)' : '#1B2B3A', 
-                        marginBottom: '8px', 
-                        fontFamily: 'var(--font-montserrat)',
-                        transition: 'color 0.4s ease'
-                      }}>
+                      </motion.div>
+                      <motion.h3 
+                        variants={{ hover: { color: '#2B8A7E' } }}
+                        style={{ 
+                          fontSize: '18px', 
+                          fontWeight: '700', 
+                          color: '#1B2B3A', 
+                          marginBottom: '8px', 
+                          fontFamily: 'var(--font-montserrat)',
+                          transition: 'color 0.4s ease'
+                        }}>
                         {service.name}
-                      </h3>
-                      <p style={{ 
-                        fontSize: '14px', 
-                        color: isHovered ? 'var(--primary)' : '#6B7A8F', 
-                        fontFamily: 'var(--font-opensans)',
-                        fontWeight: isHovered ? '700' : '400',
-                        transition: 'all 0.4s ease'
-                      }}>
+                      </motion.h3>
+                      <motion.p 
+                        variants={{ hover: { color: '#2B8A7E', fontWeight: '700' } }}
+                        style={{ 
+                          fontSize: '14px', 
+                          color: '#6B7A8F', 
+                          fontFamily: 'var(--font-opensans)',
+                          fontWeight: '400',
+                          transition: 'all 0.4s ease'
+                        }}>
                         {service.price}
-                      </p>
+                      </motion.p>
 
                       <motion.div
+                        variants={{ hover: { opacity: 1, y: 0 } }}
                         initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : 10 }}
-                        style={{ marginTop: '20px', color: 'var(--primary)', display: 'flex', alignItems: 'center', gap: '8px' }}
+                        style={{ marginTop: '20px', color: '#2B8A7E', display: 'flex', alignItems: 'center', gap: '8px' }}
                       >
                         <span style={{ fontSize: '13px', fontWeight: '700', fontFamily: 'var(--font-montserrat)' }}>Book Now</span>
                         <ArrowRight size={16} />

@@ -27,25 +27,29 @@ const Hero = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <h1 style={{ 
-              fontSize: '49px', 
-              fontWeight: '700', 
-              lineHeight: '50px', 
-              marginBottom: '24px', 
-              letterSpacing: '-1px',
-              fontFamily: 'var(--font-montserrat)',
-              color: '#1B2B3A'
-            }}>
+            <motion.h1 
+              whileHover={{ y: -3, textShadow: '0 0 20px rgba(43, 138, 126, 0.3)' }}
+              style={{ 
+                fontSize: '52px', 
+                fontWeight: '900', 
+                lineHeight: '56px', 
+                marginBottom: '24px', 
+                letterSpacing: '-2px',
+                fontFamily: 'var(--font-montserrat)',
+                color: '#1B2B3A',
+                cursor: 'default',
+                display: 'inline-block'
+              }}>
               <span style={{ color: '#1B2B3A' }}>{titleLine1}</span><br />
               <motion.span 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                style={{ color: 'var(--primary)' }}
+                style={{ color: '#2B8A7E' }}
               >
                 {titleLine2}
               </motion.span>
-            </h1>
+            </motion.h1>
             <p style={{ 
               fontSize: '16px', 
               lineHeight: '24px', 
@@ -59,24 +63,48 @@ const Hero = () => {
             </p>
             
             <ul style={{ listStyle: 'none', marginBottom: '40px', padding: 0 }}>
-              {checklist.map((item, idx) => (
+              {checklist.map((item: any, idx: number) => (
                 <motion.li 
                   key={idx} 
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 + idx * 0.08 }}
-                  className="ds-flex ds-items-center" 
-                  style={{ gap: '12px', marginBottom: '16px' }}
+                  whileHover="hover"
+                  style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px', cursor: 'default' }}
                 >
-                  <div style={{ color: 'var(--primary)', backgroundColor: 'var(--primary-light)', borderRadius: '50%', padding: '4px', display: 'flex' }}>
-                    <Check size={14} strokeWidth={4} />
-                  </div>
-                  <span style={{ 
-                    fontSize: item.size, 
-                    color: '#1B2B3A', 
-                    fontFamily: 'var(--font-opensans)', 
-                    fontWeight: '400' 
-                  }}>{item.label}</span>
+                  <motion.div 
+                    variants={{
+                      hover: { backgroundColor: '#2B8A7E', scale: 1.1 }
+                    }}
+                    style={{ 
+                      width: '22px',
+                      height: '22px',
+                      color: '#2B8A7E', 
+                      backgroundColor: '#EAF6F5', 
+                      borderRadius: '50%', 
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      flexShrink: 0,
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    <motion.div variants={{ hover: { color: '#FFFFFF' } }} style={{ display: 'flex' }}>
+                      <Check size={14} strokeWidth={4} />
+                    </motion.div>
+                  </motion.div>
+                  <motion.span 
+                    variants={{ hover: { color: '#2B8A7E', x: 5 } }}
+                    style={{ 
+                      fontSize: item.size, 
+                      color: '#1B2B3A', 
+                      fontFamily: 'var(--font-opensans)', 
+                      fontWeight: '500',
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    {item.label}
+                  </motion.span>
                 </motion.li>
               ))}
             </ul>
@@ -136,16 +164,44 @@ const Hero = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             style={{ position: 'relative' }}
           >
-            <div style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 20px 40px rgba(0,0,0,0.08)' }}>
-              <Image 
-                src="/images/image%2018.png" 
-                alt="Professional handyman standing in front of doors" 
-                width={527} 
-                height={377}
-                style={{ width: '100%', height: 'auto', display: 'block' }}
-                priority
+            <motion.div 
+              whileHover="hover"
+              style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.12)', position: 'relative', cursor: 'pointer' }}
+            >
+              <motion.div
+                variants={{
+                  hover: { scale: 1.05, filter: 'saturate(1.1) brightness(1.05)' }
+                }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              >
+                <Image 
+                  src="/images/hero-handyman.png" 
+                  alt="Professional handyman standing in front of doors" 
+                  width={527} 
+                  height={377}
+                  style={{ width: '100%', height: 'auto', display: 'block' }}
+                  priority
+                />
+              </motion.div>
+              {/* Shine Sweep */}
+              <motion.div
+                variants={{
+                  hover: { x: ['-100%', '200%'] }
+                }}
+                transition={{ duration: 1, ease: "easeInOut" }}
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '50%',
+                  height: '100%',
+                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
+                  transform: 'skewX(-25deg)',
+                  zIndex: 2,
+                  pointerEvents: 'none'
+                }}
               />
-            </div>
+            </motion.div>
             
             {/* Stat Cards from JSON mapping */}
             {stats.map((stat: any, idx: number) => {
