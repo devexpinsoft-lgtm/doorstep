@@ -73,7 +73,7 @@ const CTA = () => {
               cursor: 'default',
               display: 'inline-block'
             }}>
-            {title.split(" home?")[0]} home?
+            {title.split(" home?")[0]}
           </motion.h2>
           <p style={{ 
             fontSize: '16px', 

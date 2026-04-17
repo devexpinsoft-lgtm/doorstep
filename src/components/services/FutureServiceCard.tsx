@@ -86,28 +86,30 @@ const FutureServiceCard = ({ service }: FutureServiceCardProps) => {
           transition={{ duration: 0.4 }}
         />
         <div>
-          <motion.h3 
-            whileHover={{ y: -2, textShadow: '0 0 10px rgba(43, 138, 126, 0.2)' }}
-            style={{ 
-              fontSize: '18px', 
-              fontWeight: '700', 
-              color: '#1B2B3A', 
-              marginBottom: '4px', 
-              fontFamily: 'var(--font-montserrat)',
-              cursor: 'default',
-              display: 'inline-block'
-            }}>
-            {service.title}
-          </motion.h3>
+            <motion.h3 
+              whileHover={{ y: -2, textShadow: '0 0 10px rgba(43, 138, 126, 0.2)' }}
+              style={{ 
+                fontSize: '14px', 
+                fontWeight: '600', 
+                color: '#172535', 
+                marginBottom: '4px', 
+                fontFamily: 'var(--font-opensans)',
+                lineHeight: '16px',
+                cursor: 'default',
+                display: 'inline-block'
+              }}>
+              {service.title}
+            </motion.h3>
           <motion.p 
             variants={{
               hover: { color: '#2B8A7E' }
             }}
             style={{
-              color: '#9CA3AF',
-              fontSize: '13px',
-              fontWeight: '500',
-              fontFamily: 'var(--font-opensans)'
+              color: '#6B7A8F',
+              fontSize: '10px',
+              fontWeight: '400',
+              fontFamily: 'var(--font-opensans)',
+              lineHeight: '16px'
             }}
           >
             {service.price}

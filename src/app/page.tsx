@@ -7,7 +7,6 @@ import WhyDoorstep from "@/components/home/WhyDoorstep";
 import ServicesSection from "@/components/home/ServicesSection";
 import Testimonials from "@/components/home/Testimonials";
 import FAQ from "@/components/home/FAQ";
-import CTA from "@/components/home/CTA";
 
 export default function HomePage() {
   return (
@@ -19,7 +18,6 @@ export default function HomePage() {
       <ServicesSection />
       <Testimonials />
       <FAQ />
-      <CTA />
     </>
   );
 }

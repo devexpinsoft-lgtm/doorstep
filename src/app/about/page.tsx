@@ -182,21 +182,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 px-4 bg-gray-50">
-        <div className="container-xl px-4 md:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-navy font-poppins mb-4">
-            Ready to Experience the Difference?
-          </h2>
-          <p className="text-gray-500 max-w-lg mx-auto mb-8">
-            Join tens of thousands of homeowners who trust Doorstep for the
-            services that keep their homes running smoothly.
-          </p>
-          <Link href="/book" className="btn-primary text-base py-4 px-10">
-            Book Your First Service
-            <ArrowRight size={18} />
-          </Link>
-        </div>
       </section>
     </>
   );

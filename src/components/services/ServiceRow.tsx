@@ -164,11 +164,12 @@ const ServiceRow = ({ service, index }: ServiceRowProps) => {
             <motion.h2 
               whileHover={{ y: -3, textShadow: '0 0 15px rgba(43, 138, 126, 0.3)', color: '#1B2B3A' }}
               style={{
-                fontSize: '28px',
+                fontSize: '18px',
                 fontWeight: '700',
-                color: '#1B2B3A',
+                color: '#1E1E1E',
                 marginBottom: '16px',
                 fontFamily: 'var(--font-montserrat)',
+                lineHeight: '28px',
                 cursor: 'default',
                 display: 'inline-block',
                 transition: 'text-shadow 0.3s ease'
@@ -177,12 +178,12 @@ const ServiceRow = ({ service, index }: ServiceRowProps) => {
               {service.title}
             </motion.h2>
             <p style={{
-              fontSize: '15px',
-              color: '#6B7A8F',
+              fontSize: '14px',
+              color: '#6B6B6B',
               marginBottom: '24px',
-              maxWidth: '400px',
-              lineHeight: '1.6',
-              fontFamily: 'var(--font-opensans)',
+              maxWidth: '552px',
+              lineHeight: '20px',
+              fontFamily: 'var(--font-montserrat)',
               fontWeight: '400'
             }}>
               {service.description}
@@ -218,9 +219,10 @@ const ServiceRow = ({ service, index }: ServiceRowProps) => {
                   </motion.div>
                   <span style={{
                     fontWeight: '400',
-                    color: '#4B5563',
-                    fontFamily: 'var(--font-opensans)',
-                    fontSize: '15px'
+                    color: '#4B4B4B',
+                    fontFamily: 'var(--font-montserrat)',
+                    fontSize: '12px',
+                    lineHeight: '16px'
                   }}>{feature}</span>
                 </motion.div>
               ))}

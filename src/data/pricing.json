@@ -1,0 +1,77 @@
+{
+  "hero": {
+    "badge": "PRICING",
+    "titleLine1": "Simple",
+    "titleLine2": "Transparent",
+    "description": "No bidding. No hidden fees. No surprises. Just clear, upfront pricing.",
+    "image": "/images/pricing-hero.png"
+  },
+  "plans": [
+    {
+      "id": "lawn-care",
+      "title": "Lawn Care",
+      "icon": "Tree",
+      "subtitle": "Starting at",
+      "basePrice": "$45",
+      "table": [
+        {
+          "label": "Small Yard",
+          "price": "$45"
+        },
+        {
+          "label": "Medium Yard",
+          "price": "$55"
+        },
+        {
+          "label": "Large Yard",
+          "price": "$65+"
+        }
+      ],
+      "includes": [
+        "Mowing",
+        "Edging",
+        "Trimming",
+        "Cleanup"
+      ]
+    },
+    {
+      "id": "home-cleaning",
+      "title": "Home Cleaning",
+      "icon": "Sparkles",
+      "subtitle": "Starting at",
+      "basePrice": "$95",
+      "table": [
+        {
+          "label": "1 Bedroom",
+          "price": "$95"
+        },
+        {
+          "label": "2 - 3 Bedrooms",
+          "price": "$120"
+        },
+        {
+          "label": "Deep Clean",
+          "price": "$140 - $180"
+        }
+      ],
+      "includes": [
+        "Dusting",
+        "Vacuuming",
+        "Bathroom",
+        "Optional deep clean"
+      ]
+    }
+  ],
+  "info": [
+    {
+      "title": "Our Pricing Philosophy",
+      "description": "We're not the cheapest, we're the easiest. You pay for convenience, reliability, and peace of mind.",
+      "icon": "Lightbulb"
+    },
+    {
+      "title": "Satisfaction Guarantee",
+      "description": "If something isn't right, we'll fix it, no questions asked. Your satisfaction is our top priority.",
+      "icon": "ShieldCheck"
+    }
+  ]
+}

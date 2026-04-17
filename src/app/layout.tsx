@@ -3,6 +3,7 @@ import { Montserrat, Open_Sans, Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import CTA from "@/components/home/CTA";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body className="bg-white antialiased">
         <Navbar />
         <main>{children}</main>
+        <CTA />
         <Footer />
       </body>
     </html>
