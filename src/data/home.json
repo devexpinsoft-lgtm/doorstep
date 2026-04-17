@@ -212,7 +212,8 @@
   "testimonials": {
     "badge": "TESTIMONIALS",
     "title": "What Our Customers Say",
-    "subtitle": "Don’t take our word for it—hear from homeowners who trust Doorstep.",
+    "highlight": "",
+    "description": "Don’t take our word for it—hear from homeowners who trust Doorstep.",
     "list": [
       {
         "name": "Sarah M.",

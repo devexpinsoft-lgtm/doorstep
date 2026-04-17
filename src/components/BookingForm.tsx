@@ -13,7 +13,6 @@ import {
   MapPin, 
   Calendar, 
   MessageSquare,
-  Wrench,
   ShieldCheck,
   CreditCard,
   Sparkles
@@ -61,7 +60,7 @@ const FormField = ({
   error 
 }: { 
   label: string; 
-  icon: any; 
+  icon: React.ElementType; 
   children: React.ReactNode; 
   required?: boolean;
   error?: string;
@@ -544,6 +543,26 @@ export default function BookingForm() {
              <span style={{ fontSize: '12px', fontWeight: '600', color: '#334155', fontFamily: 'var(--font-opensans)' }}>Upfront Transparent Pricing</span>
           </div>
         </div>
+      )}
+
+      {error && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          style={{ 
+            padding: '16px', 
+            backgroundColor: '#FEF2F2', 
+            border: '1px solid #FECACA', 
+            borderRadius: '12px', 
+            color: '#B91C1C', 
+            fontSize: '14px', 
+            textAlign: 'center',
+            fontFamily: 'var(--font-opensans)',
+            fontWeight: '500'
+          }}
+        >
+          {error}
+        </motion.div>
       )}
     </form>
   );

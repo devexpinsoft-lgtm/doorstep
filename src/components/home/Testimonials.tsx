@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React from "react";
-import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight, ShieldCheck, CreditCard, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import homeData from "../../data/home.json";
+import Link from "next/link";
+import Image from "next/image";
 
 const Testimonials = () => {
   const { badge, title, highlight, description, list } = homeData.testimonials;
@@ -156,7 +158,7 @@ const Testimonials = () => {
 
           <div className="carousel-controls">
             <button className="control-btn" onClick={prevSlide} aria-label="Previous">
-              <ChevronLeft size={20} />
+              <ChevronLeft size={22} />
             </button>
             <div style={{ display: 'flex', gap: '8px' }}>
               {list.map((_, i) => (
@@ -164,7 +166,7 @@ const Testimonials = () => {
               ))}
             </div>
             <button className="control-btn" onClick={nextSlide} aria-label="Next">
-              <ChevronRight size={20} />
+              <ChevronRight size={22} />
             </button>
           </div>
         </div>
@@ -174,7 +176,7 @@ const Testimonials = () => {
             .desktop-grid {
               display: grid;
               grid-template-columns: repeat(3, 1fr);
-              gap: 24px;
+              gap: 26px;
             }
             @media (max-width: 991px) {
               .desktop-grid {
@@ -198,7 +200,7 @@ const Testimonials = () => {
                 transition={{ delay: idx * 0.1, duration: 0.5 }}
                 whileHover="hover"
                 style={{ 
-                  padding: '40px 32px', 
+                  padding: '42px 34px', 
                   backgroundColor: 'white',
                   borderRadius: '24px',
                   border: '1px solid #F1F5F9',
@@ -221,9 +223,9 @@ const Testimonials = () => {
                   {/* Visual Quote Icon */}
                   <motion.div
                     variants={{ hover: { color: '#2B8A7E', opacity: 1, scale: 1.1 } }}
-                    style={{ position: 'absolute', top: '16px', right: '16px', color: '#F0F4F8', opacity: 0.4 }}
+                    style={{ position: 'absolute', top: '18px', right: '18px', color: '#F0F4F8', opacity: 0.4 }}
                   >
-                    <Quote size={40} fill="currentColor" />
+                    <Quote size={42} fill="currentColor" />
                   </motion.div>
   
                   <div>
