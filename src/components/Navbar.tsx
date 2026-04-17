@@ -12,10 +12,11 @@ const Navbar = () => {
 
   const { links, cta } = homeData.navbar;
 
-  // Close menu when route changes
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+  const [prevPathname, setPrevPathname] = useState(pathname);
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    if (isOpen) setIsOpen(false);
+  }
 
   // Prevent scroll when menu is open
   useEffect(() => {
