@@ -38,29 +38,91 @@ const Hero = () => {
   return (
     <section className="ds-section" style={{ paddingTop: '160px', paddingBottom: '0', backgroundColor: 'var(--bg-main)', position: 'relative', overflow: 'hidden' }}>
       <div className="ds-container">
-        <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', alignItems: 'center', gap: '64px', position: 'relative', width: '100%' }}>
-          
+        <div className="hero-grid" style={{ alignItems: 'center', position: 'relative', width: '100%' }}>
+          <style jsx>{`
+            .hero-grid {
+              display: grid;
+              grid-template-columns: 1.1fr 1fr;
+              gap: 64px;
+            }
+            .hero-image-container {
+              position: relative;
+              width: 100%;
+              max-width: 600px;
+              margin: 0 auto;
+            }
+            @media (max-width: 991px) {
+              .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 48px;
+              }
+              .hero-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+              }
+              .hero-title {
+                font-size: 36px !important;
+                line-height: 42px !important;
+              }
+              .hero-description {
+                margin: 0 auto 32px auto !important;
+              }
+              .hero-checklist {
+                max-width: fit-content;
+                margin: 0 auto 40px auto !important;
+                text-align: left;
+              }
+            }
+            @media (max-width: 767px) {
+              .hero-stats-wrapper {
+                position: relative !important;
+                display: flex !important;
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+                margin-top: 24px;
+                top: auto !important;
+                bottom: auto !important;
+                left: auto !important;
+                right: auto !important;
+              }
+              .hero-stat-card {
+                position: relative !important;
+                top: auto !important;
+                bottom: auto !important;
+                left: auto !important;
+                right: auto !important;
+                width: 100%;
+                max-width: 280px;
+              }
+            }
+          `}</style>
+
           {/* Left Content */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
+            className="hero-content"
           >
-            <motion.h1 
+            <motion.h1
+              className="hero-title"
               whileHover={{ y: -3, textShadow: '0 0 20px rgba(43, 138, 126, 0.3)' }}
-              style={{ 
-                fontSize: '52px', 
-                fontWeight: '900', 
-                lineHeight: '56px', 
-                marginBottom: '24px', 
-                letterSpacing: '-2px',
+              style={{
+                fontSize: '54px',
+                fontWeight: '900',
+                lineHeight: '60px',
+                marginBottom: '24px',
+                letterSpacing: '-2.5px',
                 fontFamily: 'var(--font-montserrat)',
                 color: '#1B2B3A',
                 cursor: 'default',
                 display: 'inline-block'
               }}>
               <span style={{ color: '#1B2B3A' }}>{titleLine1}</span><br />
-              <motion.span 
+              <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
@@ -69,38 +131,38 @@ const Hero = () => {
                 {titleLine2}
               </motion.span>
             </motion.h1>
-            <p style={{ 
-              fontSize: '16px', 
-              lineHeight: '24px', 
-              marginBottom: '32px', 
-              maxWidth: '456px', 
-              color: '#1B2B3A', 
-              fontFamily: 'var(--font-opensans)', 
+            <p className="hero-description" style={{
+              fontSize: '18px',
+              lineHeight: '28px',
+              marginBottom: '32px',
+              maxWidth: '456px',
+              color: '#1B2B3A',
+              fontFamily: 'var(--font-opensans)',
               fontWeight: '400'
             }}>
               {subtitle}
             </p>
-            
-            <ul style={{ listStyle: 'none', marginBottom: '40px', padding: 0 }}>
+
+            <ul className="hero-checklist" style={{ listStyle: 'none', marginBottom: '40px', padding: 0 }}>
               {(checklist as HeroChecklist[]).map((item, idx) => (
-                <motion.li 
-                  key={idx} 
+                <motion.li
+                  key={idx}
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.4 + idx * 0.08 }}
                   whileHover="hover"
                   style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px', cursor: 'default' }}
                 >
-                  <motion.div 
+                  <motion.div
                     variants={{
                       hover: { backgroundColor: '#2B8A7E', scale: 1.1 }
                     }}
-                    style={{ 
+                    style={{
                       width: '22px',
                       height: '22px',
-                      color: '#2B8A7E', 
-                      backgroundColor: '#EAF6F5', 
-                      borderRadius: '50%', 
+                      color: '#2B8A7E',
+                      backgroundColor: '#EAF6F5',
+                      borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -112,12 +174,12 @@ const Hero = () => {
                       <Check size={14} strokeWidth={4} />
                     </motion.div>
                   </motion.div>
-                  <motion.span 
+                  <motion.span
                     variants={{ hover: { color: '#2B8A7E', x: 5 } }}
-                    style={{ 
-                      fontSize: item.size, 
-                      color: '#1B2B3A', 
-                      fontFamily: 'var(--font-opensans)', 
+                    style={{
+                      fontSize: item.size,
+                      color: '#1B2B3A',
+                      fontFamily: 'var(--font-opensans)',
                       fontWeight: '500',
                       transition: 'all 0.3s ease'
                     }}
@@ -133,16 +195,16 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
             >
-              <p style={{ 
-                fontSize: '16px', 
-                lineHeight: '20px', 
-                marginBottom: '40px', 
-                maxWidth: '549px', 
-                color: '#1B2B3A', 
+              <p className="hero-description" style={{
+                fontSize: '18px',
+                lineHeight: '24px',
+                marginBottom: '40px',
+                maxWidth: '549px',
+                color: '#1B2B3A',
                 fontFamily: 'var(--font-opensans)',
                 fontWeight: '400'
               }}>
-                 {description}
+                {description}
               </p>
 
               <motion.a
@@ -157,7 +219,7 @@ const Hero = () => {
                   color: 'white',
                   padding: '12px 28px',
                   borderRadius: '6px',
-                  fontSize: '14px',
+                  fontSize: '16px',
                   fontWeight: '600',
                   textDecoration: 'none',
                   boxShadow: '0px 1px 6px rgba(0, 0, 0, 0.15)',
@@ -166,7 +228,7 @@ const Hero = () => {
                 }}
               >
                 {ctaText}
-                <motion.span 
+                <motion.span
                   animate={{ x: [0, 5, 0] }}
                   transition={{ repeat: Infinity, duration: 2.5 }}
                 >
@@ -177,13 +239,11 @@ const Hero = () => {
           </motion.div>
 
           {/* Right Image with PREMIUM Overlays and Effects */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            style={{ position: 'relative' }}
-          >
+          <div className="hero-image-container">
             <motion.div 
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
               whileHover="hover"
               style={{ 
                 borderRadius: '24px', 
@@ -204,7 +264,7 @@ const Hero = () => {
               >
                 <Image 
                   src={image} 
-                  alt="Professional handyman standing in front of doors" 
+                  alt="Professional handyman" 
                   width={527} 
                   height={377}
                   style={{ width: '100%', height: 'auto', display: 'block' }}
@@ -232,48 +292,51 @@ const Hero = () => {
               />
             </motion.div>
             
-            {/* Stat Cards from JSON mapping */}
-            {(stats as HeroStat[]).map((stat, idx) => {
-              const Icon = iconMap[stat.icon];
-              const isTop = stat.id === 'rating';
-              return (
-                <motion.div 
-                  key={stat.id}
-                  initial={{ y: isTop ? 15 : -15, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.8 + idx * 0.2, type: "spring", stiffness: 120, damping: 20 }}
-                  style={{ 
-                    position: 'absolute', 
-                    top: isTop ? '-20px' : 'auto',
-                    bottom: isTop ? 'auto' : '-20px', 
-                    right: isTop ? '-10px' : 'auto',
-                    left: isTop ? 'auto' : '-20px',
-                    zIndex: 10,
-                    backgroundColor: 'white', 
-                    borderRadius: '10px', 
-                    padding: '12px 20px',
-                    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-                    border: '1px solid #DDDDDD',
-                    cursor: 'default'
-                  }}
-                  whileHover={{ y: -5, boxShadow: '0px 15px 35px rgba(43, 138, 126, 0.12)' }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                    <span style={{ fontSize: '15px', fontWeight: '700', color: '#000', fontFamily: 'var(--font-montserrat)' }}>
-                      <CountUp to={stat.val} suffix={stat.suffix || ""} decimals={stat.decimals || 0} />
-                    </span>
-                    {Icon && <Icon size={14} fill="#000" color="#000" />}
-                  </div>
-                  <p style={{ fontSize: '10px', fontWeight: '600', color: '#7B8597', whiteSpace: 'nowrap', fontFamily: 'var(--font-montserrat)' }}>{stat.label}</p>
-                </motion.div>
-              );
-            })}
-          </motion.div>
+            {/* Stat Cards */}
+            <div className="hero-stats-wrapper">
+              {(stats as HeroStat[]).map((stat, idx) => {
+                const Icon = iconMap[stat.icon];
+                const isTop = stat.id === 'rating';
+                return (
+                  <motion.div 
+                    key={stat.id}
+                    className="hero-stat-card"
+                    initial={{ y: isTop ? 15 : -15, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.8 + idx * 0.2, type: "spring", stiffness: 120, damping: 20 }}
+                    style={{ 
+                      position: 'absolute', 
+                      top: isTop ? '-20px' : 'auto',
+                      bottom: isTop ? 'auto' : '-20px', 
+                      right: isTop ? '-10px' : 'auto',
+                      left: isTop ? 'auto' : '-20px',
+                      zIndex: 10,
+                      backgroundColor: 'white', 
+                      borderRadius: '10px', 
+                      padding: '8px 16px',
+                      boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+                      border: '1px solid #EEEEEE',
+                      cursor: 'default'
+                    }}
+                    whileHover={{ y: -5, boxShadow: '0px 15px 35px rgba(43, 138, 126, 0.12)' }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                      <span style={{ fontSize: '14px', fontWeight: '700', color: '#000', fontFamily: 'var(--font-montserrat)' }}>
+                        <CountUp to={stat.val} suffix={stat.suffix || ""} decimals={stat.decimals || 0} />
+                      </span>
+                      {Icon && <Icon size={12} fill="#000" color="#000" />}
+                    </div>
+                    <p style={{ fontSize: '9px', fontWeight: '600', color: '#7B8597', whiteSpace: 'nowrap', fontFamily: 'var(--font-montserrat)' }}>{stat.label}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
 
       {/* Trust Bar from JSON */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -284,14 +347,14 @@ const Hero = () => {
           {(trustBar as HeroTrust[]).map((item, idx) => {
             const Icon = iconMap[item.icon];
             return (
-              <motion.div 
-                key={idx} 
+              <motion.div
+                key={idx}
                 whileHover={{ y: -3, color: "var(--primary)" }}
-                className="ds-flex ds-items-center" 
+                className="ds-flex ds-items-center"
                 style={{ gap: '10px', cursor: 'default', transition: 'color 0.3s ease' }}
               >
                 <div style={{ color: '#2A9D90', display: 'flex' }}>
-                   {Icon && <Icon size={18} />}
+                  {Icon && <Icon size={18} />}
                 </div>
                 <span style={{ fontSize: '12px', color: '#6B7A8F', fontFamily: 'var(--font-opensans)', fontWeight: '400', lineHeight: '16px' }}>{item.label}</span>
               </motion.div>

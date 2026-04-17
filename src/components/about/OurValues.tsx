@@ -55,13 +55,7 @@ const OurValues = () => {
         </div>
 
         {/* Values Grid */}
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(3, 1fr)', 
-          gap: '40px',
-          maxWidth: '1100px',
-          margin: '0 auto'
-        }}>
+        <div className="ds-grid-3" style={{ maxWidth: '1100px', margin: '0 auto' }}>
           {list.map((val, idx) => (
             <FeatureCard
               key={idx}

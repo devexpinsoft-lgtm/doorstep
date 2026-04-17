@@ -15,13 +15,7 @@ const MissionObjectives = () => {
   return (
     <section className="ds-section" style={{ backgroundColor: 'white', padding: '100px 0 40px 0' }}>
       <div className="ds-container">
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(3, 1fr)', 
-          gap: '40px',
-          maxWidth: '1100px',
-          margin: '0 auto'
-        }}>
+        <div className="ds-grid-3" style={{ maxWidth: '1100px', margin: '0 auto' }}>
           {aboutData.objectives.map((obj, idx) => (
             <FeatureCard
               key={idx}

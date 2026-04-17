@@ -24,16 +24,16 @@ const Footer = () => {
   return (
     <footer style={{ backgroundColor: "#FFFFFF", padding: "80px 0 32px 0", borderTop: "1px solid #D9E2EC" }}>
       <div className="ds-container">
-        <div style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr 0.8fr 1.2fr", gap: "48px", marginBottom: "80px" }}>
-          
+        <div className="ds-footer-grid" style={{ marginBottom: "80px" }}>
+
           {/* Brand Column */}
           <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
             <Link href="/" style={{ textDecoration: "none" }}>
-              <Image 
-                src="/images/doorstep-logo.png" 
-                alt="Doorstep Logo" 
-                width={120} 
-                height={32} 
+              <Image
+                src="/images/doorstep-logo.png"
+                alt="Doorstep Logo"
+                width={120}
+                height={32}
                 style={{ height: 'auto', width: '120px' }}
                 priority
               />
@@ -102,11 +102,31 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div style={{ borderTop: "1px solid #D9D9D9", paddingTop: "24px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "20px" }}>
-          <p style={{ fontSize: "12px", color: "#A1B0BD", fontFamily: "var(--font-opensans)", fontWeight: "400" }}>
+        <div style={{ 
+          borderTop: "1px solid #D9D9D9", 
+          paddingTop: "24px", 
+          display: "flex", 
+          justifyContent: "space-between", 
+          alignItems: "center", 
+          flexWrap: "wrap", 
+          gap: "20px",
+          textAlign: "center"
+        }} className="ds-footer-bottom">
+          <p style={{ fontSize: "12px", color: "#A1B0BD", fontFamily: "var(--font-opensans)", fontWeight: "400", width: "100%", display: "block" }} className="ds-show-mobile">
             © 2026 Doorstep. All rights reserved.
           </p>
-          <div style={{ display: "flex", gap: "32px" }}>
+          <p style={{ fontSize: "12px", color: "#A1B0BD", fontFamily: "var(--font-opensans)", fontWeight: "400" }} className="ds-hide-mobile">
+            © 2026 Doorstep. All rights reserved.
+          </p>
+          <div style={{ display: "flex", gap: "32px", justifyContent: "center", width: "100%" }} className="ds-show-mobile">
+            <Link href="/" style={{ fontSize: "12px", color: "#A1B0BD", textDecoration: "none", fontFamily: "var(--font-opensans)", transition: "color 0.2s ease" }}>
+              <motion.span whileHover={{ color: "#2B8A7E" }}>Privacy Policy</motion.span>
+            </Link>
+            <Link href="/" style={{ fontSize: "12px", color: "#A1B0BD", textDecoration: "none", fontFamily: "var(--font-opensans)", transition: "color 0.2s ease" }}>
+              <motion.span whileHover={{ color: "#2B8A7E" }}>Terms of Service</motion.span>
+            </Link>
+          </div>
+          <div style={{ display: "flex", gap: "32px" }} className="ds-hide-mobile">
             <Link href="/" style={{ fontSize: "12px", color: "#A1B0BD", textDecoration: "none", fontFamily: "var(--font-opensans)", transition: "color 0.2s ease" }}>
               <motion.span whileHover={{ color: "#2B8A7E" }}>Privacy Policy</motion.span>
             </Link>

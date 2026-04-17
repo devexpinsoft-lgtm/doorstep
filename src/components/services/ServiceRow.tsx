@@ -67,7 +67,7 @@ const ServiceRow = ({ service, index }: ServiceRowProps) => {
               rotate
             }}
           >
-            <motion.div 
+            <motion.div
               whileHover="hover"
               style={{
                 position: 'relative',
@@ -79,8 +79,8 @@ const ServiceRow = ({ service, index }: ServiceRowProps) => {
                 cursor: 'pointer'
               }}
               variants={{
-                hover: { 
-                  scale: 1.02, 
+                hover: {
+                  scale: 1.02,
                   boxShadow: '0 30px 60px rgba(0,0,0,0.15)',
                 }
               }}
@@ -162,7 +162,7 @@ const ServiceRow = ({ service, index }: ServiceRowProps) => {
                 transition={{ duration: 0.3 }}
               />
             </motion.div>
-            <motion.h2 
+            <motion.h2
               whileHover={{ y: -3, textShadow: '0 0 15px rgba(43, 138, 126, 0.3)', color: '#1B2B3A' }}
               style={{
                 fontSize: '18px',
@@ -199,7 +199,7 @@ const ServiceRow = ({ service, index }: ServiceRowProps) => {
                   style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}
                   whileHover="hover"
                 >
-                  <motion.div 
+                  <motion.div
                     variants={{
                       hover: { scale: 1.15, rotate: 10, backgroundColor: '#2B8A7E', color: '#FFFFFF' }
                     }}

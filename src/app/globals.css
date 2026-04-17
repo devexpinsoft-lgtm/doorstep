@@ -110,16 +110,19 @@ a {
 }
 
 .ds-grid-2 {
+  display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
 }
 
 .ds-grid-3 {
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
 }
 
 .ds-grid-4 {
+  display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
 }
@@ -130,6 +133,14 @@ a {
   .ds-grid-4 {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .ds-hide-mobile {
+    display: none !important;
+  }
+
+  .ds-show-mobile {
+    display: flex !important;
+  }
 }
 
 @media (max-width: 767px) {
@@ -139,6 +150,31 @@ a {
   .ds-grid-4 {
     grid-template-columns: 1fr;
   }
+}
+
+/* Footer Responsive Grid */
+.ds-footer-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr 0.8fr 1.2fr;
+  gap: 48px;
+}
+
+@media (max-width: 991px) {
+  .ds-footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ds-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.ds-show-mobile {
+  display: none;
 }
 
 /* UI Components */

@@ -43,14 +43,7 @@ const ProviderFeatures = () => {
         </motion.div>
 
         {/* Features Grid - Cleaned up to use common FeatureCard */}
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(4, 1fr)', 
-          gap: '24px',
-          justifyContent: 'center',
-          maxWidth: '1100px',
-          margin: '0 auto'
-        }}>
+        <div className="ds-grid-4" style={{ justifyContent: 'center', maxWidth: '1100px', margin: '0 auto' }}>
           {list.map((feature, idx) => (
             <FeatureCard
               key={idx}

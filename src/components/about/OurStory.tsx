@@ -19,7 +19,31 @@ const OurStory = () => {
   return (
     <section className="ds-section" style={{ backgroundColor: '#F6FAF9', padding: '100px 0' }}>
       <div className="ds-container">
-        <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '80px', alignItems: 'center' }}>
+        <style jsx>{`
+          .story-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
+            align-items: center;
+          }
+          .stats-container {
+            display: flex;
+            gap: 24px;
+          }
+          @media (max-width: 991px) {
+            .story-grid {
+              grid-template-columns: 1fr;
+              gap: 48px;
+              text-align: center;
+            }
+            .stats-container {
+              justify-content: center;
+              flex-wrap: wrap;
+              gap: 20px;
+            }
+          }
+        `}</style>
+        <div className="story-grid">
           
           {/* Content side */}
           <motion.div
@@ -66,7 +90,7 @@ const OurStory = () => {
             </p>
 
             {/* Stats Grid */}
-            <div style={{ display: 'flex', gap: '24px' }}>
+            <div className="stats-container">
               {stats.map((stat, idx) => {
                 const countProps = getCountUpProps(stat.value);
                 return (

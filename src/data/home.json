@@ -2,24 +2,29 @@
   "navbar": {
     "links": [
       {
+        "name": "Home",
+        "href": "/",
+        "size": "15.5px"
+      },
+      {
         "name": "Services",
         "href": "/services",
-        "size": "13.22px"
+        "size": "15.22px"
       },
       {
         "name": "Pricing",
         "href": "/pricing",
-        "size": "13.38px"
+        "size": "15.38px"
       },
       {
         "name": "Providers",
         "href": "/providers",
-        "size": "13.77px"
+        "size": "15.77px"
       },
       {
         "name": "About",
         "href": "/about",
-        "size": "14px"
+        "size": "16px"
       }
     ],
     "cta": "Book Now"

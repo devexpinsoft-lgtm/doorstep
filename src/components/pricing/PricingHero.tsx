@@ -8,14 +8,41 @@ const PricingHero = () => {
   const { badge, titleLine1, titleLine2, description } = pricingData.hero;
 
   return (
-    <section className="ds-section" style={{ paddingTop: '160px', paddingBottom: '100px', backgroundColor: '#F6F4F1' }}>
+    <section className="ds-section" style={{ paddingTop: '160px', paddingBottom: '80px', backgroundColor: '#F6F4F1' }}>
       <div className="ds-container">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', alignItems: 'center', gap: '80px' }}>
+        <div 
+          className="pricing-hero-grid"
+          style={{ alignItems: 'center' }}
+        >
+          <style jsx>{`
+            .pricing-hero-grid {
+              display: grid;
+              grid-template-columns: 1fr 1.1fr;
+              gap: 80px;
+            }
+            @media (max-width: 991px) {
+              .pricing-hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 48px;
+              }
+              .pricing-content {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+              }
+              .pricing-title {
+                font-size: 32px !important;
+                line-height: 38px !important;
+              }
+            }
+          `}</style>
           
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
+            className="pricing-content"
           >
             <div style={{ 
               display: 'inline-flex',
@@ -35,6 +62,7 @@ const PricingHero = () => {
             
             <div style={{ width: '100%', marginBottom: '24px' }}>
               <motion.h1 
+                className="pricing-title"
                 whileHover={{ y: -3, textShadow: '0 0 20px rgba(43, 138, 126, 0.3)' }}
                 style={{ 
                   fontSize: '40px', 
@@ -63,11 +91,11 @@ const PricingHero = () => {
           </motion.div>
 
           <div style={{ position: 'relative' }}>
-            <motion.div 
+            <motion.div
               whileHover="hover"
-              style={{ 
-                borderRadius: '24px', 
-                overflow: 'hidden', 
+              style={{
+                borderRadius: '24px',
+                overflow: 'hidden',
                 boxShadow: '0 20px 40px rgba(0,0,0,0.08)',
                 position: 'relative',
                 cursor: 'pointer'
@@ -82,7 +110,7 @@ const PricingHero = () => {
                 }}
                 transition={{ duration: 0.4 }}
               >
-                <Image 
+                <Image
                   src="/images/pricing-hero.png"
                   alt="Pricing Hero"
                   width={600}

@@ -19,7 +19,48 @@ const TrustedPartner = () => {
   return (
     <section className="ds-section" style={{ backgroundColor: '#F4F7FB', overflow: 'hidden', padding: '100px 0' }}>
       <div className="ds-container">
-        <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: '64px', alignItems: 'start' }}>
+        <div className="partner-grid" style={{ alignItems: 'start' }}>
+          <style jsx>{`
+            .partner-grid {
+              display: grid;
+              grid-template-columns: 1.1fr 1fr;
+              gap: 64px;
+            }
+            .stats-grid {
+              display: grid;
+              grid-template-columns: repeat(3, 1fr);
+              gap: 16px;
+            }
+            @media (max-width: 991px) {
+              .partner-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+              }
+              .partner-content {
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+              }
+              .partner-description {
+                margin: 0 auto 40px auto !important;
+              }
+            }
+            @media (max-width: 767px) {
+              .stats-grid {
+                grid-template-columns: 1fr;
+              }
+              .benefit-item {
+                flex-direction: column !important;
+                text-align: center;
+                height: auto !important;
+                padding: 32px 24px !important;
+              }
+              .benefit-icon {
+                margin-bottom: 16px;
+              }
+            }
+          `}</style>
           
           {/* Left Side */}
           <motion.div
@@ -27,6 +68,7 @@ const TrustedPartner = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: "easeOut" }}
+            className="partner-content"
           >
             <div style={{ 
               display: 'inline-flex',
@@ -47,11 +89,11 @@ const TrustedPartner = () => {
                 {title}
               </motion.h2>
             </div>
-            <p style={{ fontSize: '12px', lineHeight: '21px', color: '#6B7A8F', marginBottom: '40px', maxWidth: '471px', fontFamily: 'var(--font-opensans)', fontWeight: '400' }}>
+            <p className="partner-description" style={{ fontSize: '12px', lineHeight: '21px', color: '#6B7A8F', marginBottom: '40px', maxWidth: '471px', fontFamily: 'var(--font-opensans)', fontWeight: '400' }}>
                {description}
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+            <div className="stats-grid">
               {stats.map((stat: any, i: number) => (
                 <motion.div 
                   key={i}
@@ -74,7 +116,7 @@ const TrustedPartner = () => {
                     alignItems: 'center', 
                     justifyContent: 'center',
                     cursor: 'default',
-                    transition: 'border-color 0.2s ease'
+                    transition: 'all 0.3s ease'
                   }}
                 >
                   <p style={{ fontSize: '18px', fontWeight: '700', color: 'var(--primary)', marginBottom: '4px', fontFamily: 'var(--font-opensans)' }}>
@@ -131,12 +173,13 @@ const TrustedPartner = () => {
               />
             </motion.div>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div className="benefits-list" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {benefits.map((item: any, idx: number) => {
                 const Icon = iconMap[item.icon];
                 return (
                   <motion.div 
                     key={idx} 
+                    className="benefit-item"
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -153,7 +196,7 @@ const TrustedPartner = () => {
                       cursor: 'pointer',
                       boxShadow: '0 4px 10px rgba(0,0,0,0.03)',
                       transition: 'all 0.3s ease',
-                      height: '96px'
+                      minHeight: '96px'
                     }}
                     variants={{
                       hover: { 
@@ -164,6 +207,7 @@ const TrustedPartner = () => {
                     }}
                   >
                     <motion.div 
+                      className="benefit-icon"
                       variants={{
                         hover: { scale: 1.15, rotate: 10, backgroundColor: '#2B8A7E', color: '#FFFFFF' }
                       }}
@@ -200,6 +244,7 @@ const TrustedPartner = () => {
         </div>
       </div>
     </section>
+
   );
 };
 

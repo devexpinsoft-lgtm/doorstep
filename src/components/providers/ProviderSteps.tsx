@@ -35,13 +35,7 @@ const ProviderSteps = () => {
         </motion.div>
 
         {/* Steps Grid - Using FeatureCard ghost variant */}
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(3, 1fr)', 
-          gap: '40px',
-          maxWidth: '1200px',
-          margin: '0 auto'
-        }}>
+        <div className="ds-grid-3" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           {steps.map((step, idx) => (
             <FeatureCard
               key={idx}
