@@ -1,59 +1,36 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+import { Montserrat, Open_Sans, Roboto } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-inter",
+  variable: "--font-montserrat",
   display: "swap",
 });
 
-const poppins = Poppins({
+const openSans = Open_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-poppins",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-opensans",
+  display: "swap",
+});
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700", "900"],
+  variable: "--font-roboto",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Doorstep – Professional Home Services On Demand",
-    template: "%s | Doorstep",
+    default: "DoorStep",
+    template: "%s - DoorStep",
   },
-  description:
-    "Doorstep connects you with certified home service professionals for cleaning, repairs, plumbing, electrical, and more. Book trusted services online in minutes.",
-  keywords: [
-    "home services",
-    "book home services",
-    "professional cleaning",
-    "home repair",
-    "plumbing service",
-    "electrical services",
-    "doorstep home services",
-    "on-demand home services USA",
-  ],
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://doorstephome.com",
-    siteName: "Doorstep",
-    title: "Doorstep – Professional Home Services On Demand",
-    description:
-      "Book certified home service professionals for cleaning, repairs, plumbing, electrical, and more.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Doorstep – Professional Home Services On Demand",
-    description:
-      "Book certified home service professionals for cleaning, repairs, plumbing, electrical, and more.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  description: "DoorStep connects you with certified home service professionals. Book trusted services online in minutes.",
 };
 
 export default function RootLayout({
@@ -62,7 +39,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${montserrat.variable} ${openSans.variable} ${roboto.variable}`} suppressHydrationWarning>
       <body className="bg-white antialiased">
         <Navbar />
         <main>{children}</main>

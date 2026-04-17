@@ -1,108 +1,143 @@
+"use client";
+import React from "react";
 import Link from "next/link";
-import Logo from "@/components/Logo";
-import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Mail, Phone, Clock } from "lucide-react";
 
-const footerLinks = {
-  Company: [
-    { label: "About Us", href: "/about" },
-    { label: "Our Services", href: "/services" },
-    { label: "How It Works", href: "/#how-it-works" },
-    { label: "Careers", href: "#" },
-  ],
-  Services: [
-    { label: "Home Cleaning", href: "/services" },
-    { label: "Plumbing", href: "/services" },
-    { label: "Electrical", href: "/services" },
-    { label: "HVAC & Heating", href: "/services" },
-    { label: "Home Repairs", href: "/services" },
-  ],
-  Support: [
-    { label: "Contact Us", href: "/contact" },
-    { label: "Book a Service", href: "/book" },
-    { label: "FAQs", href: "#" },
-    { label: "Privacy Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
-  ],
-};
-
-const socials = [
-  { icon: Facebook, label: "Facebook", href: "#" },
-  { icon: Twitter, label: "Twitter", href: "#" },
-  { icon: Instagram, label: "Instagram", href: "#" },
-  { icon: Linkedin, label: "LinkedIn", href: "#" },
-  { icon: Youtube, label: "YouTube", href: "#" },
+const quickLinks = [
+  { name: "Book a Service", href: "/book" },
+  { name: "How It Works", href: "/#how-it-works" },
+  { name: "About Us", href: "/about" },
+  { name: "Testimonials", href: "/#testimonials" },
+  { name: "FAQ", href: "/#faq" }
 ];
 
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
+const serviceLinks = [
+  { name: "Lawn Care", href: "/services#lawn-care" },
+  { name: "House Cleaning", href: "/services#home-cleaning" },
+  { name: "Pricing Plans", href: "/pricing" },
+  { name: "Become a Provider", href: "/providers" }
+];
 
+const Footer = () => {
   return (
-    <footer className="bg-brand-navy text-white">
-      {/* Main Footer */}
-      <div className="container-xl px-4 md:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+    <footer style={{ backgroundColor: "#FFFFFF", padding: "80px 0 32px 0", borderTop: "1px solid #D9E2EC" }}>
+      <div className="ds-container">
+        <div className="ds-footer-grid" style={{ marginBottom: "80px" }}>
+
           {/* Brand Column */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="mb-5 block">
-              <Logo variant="light" />
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            <Link href="/" style={{ textDecoration: "none" }}>
+              <Image
+                src="/images/doorstep-logo.png"
+                alt="Doorstep Logo"
+                width={120}
+                height={32}
+                style={{ height: 'auto', width: '120px' }}
+                priority
+              />
             </Link>
-            <p className="text-gray-300 text-sm leading-relaxed mb-6 max-w-sm">
-              Your trusted partner for all home services. We connect you with
-              certified professionals for a better, more comfortable home—right
-              when you need it.
+            <p style={{ fontSize: "14px", lineHeight: "1.6", color: "#6B7A8F", fontFamily: "var(--font-opensans)", maxWidth: "260px", fontWeight: "400" }}>
+              Your trusted partner for home services. Vetted professionals, transparent pricing, guaranteed satisfaction.
             </p>
-            {/* Contact Info */}
-            <div className="space-y-2 text-sm text-gray-300">
-              <p>📍 123 Main Street, New York, NY 10001</p>
-              <p>📞 +1 (800) 555-DOOR</p>
-              <p>✉️ hello@doorstephome.com</p>
-            </div>
           </div>
 
-          {/* Links Columns */}
-          {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
-              <h4 className="font-semibold text-white mb-5 font-poppins">
-                {title}
-              </h4>
-              <ul className="space-y-3">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-gray-400 text-sm hover:text-brand-teal transition-colors duration-200"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
+          {/* Quick Links */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            <h4 style={{ fontSize: "14px", fontWeight: "600", color: "#1B2B3A", fontFamily: "var(--font-opensans)" }}>
+              Quick Links
+            </h4>
+            <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
+              {quickLinks.map((link, i) => (
+                <li key={i}>
+                  <Link href={link.href} style={{ fontSize: "14px", color: "#6B7A8F", textDecoration: "none", fontFamily: "var(--font-opensans)", transition: "color 0.2s ease", fontWeight: "400", lineHeight: "20px" }}>
+                    <motion.span whileHover={{ x: 5, color: "#2B8A7E" }}>{link.name}</motion.span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="container-xl px-4 md:px-8 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-gray-400 text-sm">
-            &copy; {currentYear} Doorstep Inc. All rights reserved.
+          {/* Services */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            <h4 style={{ fontSize: "14px", fontWeight: "600", color: "#1B2B3A", fontFamily: "var(--font-opensans)" }}>
+              Our Platform
+            </h4>
+            <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "12px" }}>
+              {serviceLinks.map((link, i) => (
+                <li key={i}>
+                  <Link href={link.href} style={{ fontSize: "14px", color: "#6B7A8F", textDecoration: "none", fontFamily: "var(--font-opensans)", transition: "color 0.2s ease", fontWeight: "400", lineHeight: "20px" }}>
+                    <motion.span whileHover={{ x: 5, color: "#2B8A7E" }}>{link.name}</motion.span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Us */}
+          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+            <h4 style={{ fontSize: "14px", fontWeight: "600", color: "#1B2B3A", fontFamily: "var(--font-opensans)" }}>
+              Contact Us
+            </h4>
+            <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: "14px" }}>
+              <li style={{ display: "flex", alignItems: "center", gap: "10px", color: "#6B7A8F", fontSize: "14px", fontFamily: "var(--font-opensans)", fontWeight: "400", lineHeight: "20px" }}>
+                <Mail size={14} color="#6B7A8F" />
+                <motion.a href="mailto:support@doorstep.com" whileHover={{ color: "#2B8A7E" }} style={{ textDecoration: "none", color: "inherit" }}>
+                   support@doorstep.com
+                </motion.a>
+              </li>
+              <li style={{ display: "flex", alignItems: "center", gap: "10px", color: "#6B7A8F", fontSize: "14px", fontFamily: "var(--font-opensans)", fontWeight: "400", lineHeight: "20px" }}>
+                <Phone size={14} color="#6B7A8F" />
+                <motion.a href="tel:1231234567" whileHover={{ color: "#2B8A7E" }} style={{ textDecoration: "none", color: "inherit" }}>
+                   (123) 123-4567
+                </motion.a>
+              </li>
+              <li style={{ display: "flex", alignItems: "center", gap: "10px", color: "#6B7A8F", fontSize: "14px", fontFamily: "var(--font-opensans)", fontWeight: "400", lineHeight: "20px" }}>
+                <Clock size={14} color="#6B7A8F" />
+                <span>Available Nationwide</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div style={{ 
+          borderTop: "1px solid #D9D9D9", 
+          paddingTop: "24px", 
+          display: "flex", 
+          justifyContent: "space-between", 
+          alignItems: "center", 
+          flexWrap: "wrap", 
+          gap: "20px",
+          textAlign: "center"
+        }} className="ds-footer-bottom">
+          <p style={{ fontSize: "12px", color: "#A1B0BD", fontFamily: "var(--font-opensans)", fontWeight: "400", width: "100%", display: "block" }} className="ds-show-mobile">
+            © 2026 Doorstep. All rights reserved.
           </p>
-          {/* Social Icons */}
-          <div className="flex items-center gap-3">
-            {socials.map(({ icon: Icon, label, href }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-brand-teal transition-all duration-200"
-              >
-                <Icon size={15} />
-              </a>
-            ))}
+          <p style={{ fontSize: "12px", color: "#A1B0BD", fontFamily: "var(--font-opensans)", fontWeight: "400" }} className="ds-hide-mobile">
+            © 2026 Doorstep. All rights reserved.
+          </p>
+          <div style={{ display: "flex", gap: "32px", justifyContent: "center", width: "100%" }} className="ds-show-mobile">
+            <Link href="/" style={{ fontSize: "12px", color: "#A1B0BD", textDecoration: "none", fontFamily: "var(--font-opensans)", transition: "color 0.2s ease" }}>
+              <motion.span whileHover={{ color: "#2B8A7E" }}>Privacy Policy</motion.span>
+            </Link>
+            <Link href="/" style={{ fontSize: "12px", color: "#A1B0BD", textDecoration: "none", fontFamily: "var(--font-opensans)", transition: "color 0.2s ease" }}>
+              <motion.span whileHover={{ color: "#2B8A7E" }}>Terms of Service</motion.span>
+            </Link>
+          </div>
+          <div style={{ display: "flex", gap: "32px" }} className="ds-hide-mobile">
+            <Link href="/" style={{ fontSize: "12px", color: "#A1B0BD", textDecoration: "none", fontFamily: "var(--font-opensans)", transition: "color 0.2s ease" }}>
+              <motion.span whileHover={{ color: "#2B8A7E" }}>Privacy Policy</motion.span>
+            </Link>
+            <Link href="/" style={{ fontSize: "12px", color: "#A1B0BD", textDecoration: "none", fontFamily: "var(--font-opensans)", transition: "color 0.2s ease" }}>
+              <motion.span whileHover={{ color: "#2B8A7E" }}>Terms of Service</motion.span>
+            </Link>
           </div>
         </div>
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;

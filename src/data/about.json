@@ -1,0 +1,67 @@
+{
+  "hero": {
+    "badge": "ABOUT US",
+    "titleLine1": "Making home services",
+    "titleLine2": "simple",
+    "description": "The current home services experience is broken — too many choices, too much uncertainty. Doorstep simplifies everything.",
+    "image": "/images/about-hero.png"
+  },
+  "objectives": [
+    {
+      "icon": "Target",
+      "title": "Our Mission",
+      "desc": "To make booking home services as easy as ordering food. One tap, done."
+    },
+    {
+      "icon": "MapPin",
+      "title": "Local Focus",
+      "desc": "Starting in Springfield, Missouri, with a commitment to quality and reliability in every job."
+    },
+    {
+      "icon": "Rocket",
+      "title": "Our Vision",
+      "desc": "A future where home services are instant, simple, and stress-free for everyone."
+    }
+  ],
+  "story": {
+    "badge": "OUR STORY",
+    "title": "Born from frustration",
+    "description": "We've all been there: spending hours searching for a reliable plumber, comparing quotes from landscapers, or wondering if the cleaner will actually show up. Doorstep was founded to fix this. We believe getting help around your home shouldn't be harder than ordering dinner. That's why we vet every provider, set transparent pricing, and guarantee your satisfaction on every job.",
+    "image": "/images/about-story.png",
+    "stats": [
+      {
+        "value": "10K+",
+        "label": "Jobs Completed"
+      },
+      {
+        "value": "500+",
+        "label": "Verified Pros"
+      },
+      {
+        "value": "4.9★",
+        "label": "Average Rating"
+      }
+    ]
+  },
+  "values": {
+    "title": "Our values.",
+    "description": "The principles that guide everything we do.",
+    "list": [
+      {
+        "icon": "ShieldCheck",
+        "title": "Trust & Safety",
+        "desc": "Every professional is background-checked and vetted before joining our platform."
+      },
+      {
+        "icon": "Heart",
+        "title": "Customer First",
+        "desc": "We're obsessed with your satisfaction — guaranteed on every service, every time."
+      },
+      {
+        "icon": "Zap",
+        "title": "Steady Customers",
+        "desc": "We focus on doing a few services extremely well to ensure consistency and quality."
+      }
+    ]
+  }
+}

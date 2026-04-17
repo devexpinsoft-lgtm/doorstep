@@ -1,128 +1,232 @@
 "use client";
-
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Logo from "@/components/Logo";
-import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import homeData from "../data/home.json";
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
-
-export default function Navbar() {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { links, cta } = homeData.navbar;
 
+  // Close menu when route changes
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
+  // Prevent scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isOpen]);
+
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-brand border-b border-gray-100"
-          : "bg-transparent"
-      }`}
-    >
-      <nav className="container-xl px-4 md:px-8">
-        <div className="flex items-center justify-between h-16 md:h-20">
+    <>
+      <nav 
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '68px',
+          zIndex: 1001,
+          backgroundColor: 'rgba(255, 255, 255, 1)',
+          backdropFilter: 'blur(10px)',
+          transition: 'all 0.3s ease',
+          borderBottom: '1px solid #D9E2EC'
+        }}
+      >
+        <div className="ds-container ds-flex ds-justify-between ds-items-center" style={{ height: '100%', position: 'relative' }}>
+          
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <Logo 
-              textColor={scrolled ? "text-brand-navy" : "text-white"} 
-            />
+          <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', zIndex: 1002 }}>
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              style={{ display: 'flex', alignItems: 'center' }}
+            >
+              <Image 
+                src="/logo_cropped.png" 
+                alt="Doorstep Logo" 
+                width={80} 
+                height={80}
+                style={{ objectFit: 'contain' }}
+                priority
+              />
+            </motion.div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  pathname === link.href
-                    ? "text-brand-blue bg-blue-50"
-                    : scrolled
-                    ? "text-gray-600 hover:text-brand-navy hover:bg-gray-50"
-                    : "text-white/80 hover:text-white hover:bg-white/10"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+          {/* Desktop Nav Links */}
+          <div className="ds-hide-mobile" style={{ 
+            position: 'absolute', 
+            left: '50%', 
+            top: '50%', 
+            transform: 'translate(-50%, -50%)', 
+            display: 'flex', 
+            gap: '32px',
+            fontFamily: 'var(--font-montserrat)',
+            fontWeight: '500'
+          }}>
+            {links.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link key={link.name} href={link.href} style={{ textDecoration: 'none', position: 'relative' }}>
+                  <motion.span
+                    whileHover={{ color: '#2B8A7E' }}
+                    style={{ 
+                      fontSize: link.size, 
+                      color: isActive ? '#2B8A7E' : '#374151', 
+                      transition: 'color 0.3s ease' 
+                    }}
+                  >
+                    {link.name}
+                  </motion.span>
+                  <motion.div 
+                    className="ds-absolute ds-bottom-[-10px] ds-left-0 ds-right-0 ds-h-[2px] ds-bg-[#2B8A7E]"
+                    initial={{ scaleX: isActive ? 1 : 0 }}
+                    animate={{ scaleX: isActive ? 1 : 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </Link>
+              );
+            })}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link href="/book" className="btn-primary text-sm py-2.5 px-5">
-              Book a Service
-            </Link>
+          {/* Desktop Right Nav Action */}
+          <div className="ds-hide-mobile">
+            <motion.a
+              href="/book"
+              whileHover={{ scale: 1.05, boxShadow: "0 4px 10px rgba(43, 138, 126, 0.2)" }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                backgroundColor: '#2B8A7E',
+                color: 'white',
+                padding: '8px 20px',
+                borderRadius: '6px',
+                fontSize: '16px', // Updated from 14px
+                fontWeight: '600',
+                fontFamily: 'var(--font-opensans)',
+                textDecoration: 'none',
+                boxShadow: '0px 1px 6px rgba(0, 0, 0, 0.15)'
+              }}
+            >
+              {cta}
+            </motion.a>
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className={`md:hidden p-2 rounded-lg transition-colors duration-200 ${
-              scrolled
-                ? "text-brand-navy hover:bg-gray-100"
-                : "text-white hover:bg-white/10"
-            }`}
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          <div className="ds-show-mobile" style={{ zIndex: 1002 }}>
+            <button 
+              onClick={() => setIsOpen(!isOpen)}
+              style={{
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '6px',
+                padding: '8px'
+              }}
+              aria-label="Toggle Menu"
+            >
+              <motion.span 
+                animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                style={{ width: '24px', height: '2px', backgroundColor: '#374151', display: 'block' }}
+              />
+              <motion.span 
+                animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+                style={{ width: '24px', height: '2px', backgroundColor: '#374151', display: 'block' }}
+              />
+              <motion.span 
+                animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+                style={{ width: '24px', height: '2px', backgroundColor: '#374151', display: 'block' }}
+              />
+            </button>
+          </div>
         </div>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="md:hidden bg-white border-t border-gray-100 shadow-lg overflow-hidden"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'white',
+              zIndex: 1000,
+              paddingTop: '100px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '24px'
+            }}
           >
-            <div className="px-4 py-4 space-y-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
+            {links.map((link, index) => (
+              <motion.div
+                key={link.name}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.1 + index * 0.05 }}
+              >
+                <Link 
                   href={link.href}
-                  className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
-                    pathname === link.href
-                      ? "text-brand-blue bg-blue-50"
-                      : "text-gray-700 hover:bg-gray-50 hover:text-brand-navy"
-                  }`}
+                  style={{
+                    fontSize: '20px', 
+                    fontWeight: '500',
+                    color: pathname === link.href ? '#2B8A7E' : '#1B2B3A',
+                    fontFamily: 'var(--font-montserrat)',
+                    textDecoration: 'none'
+                  }}
                 >
-                  {link.label}
+                  {link.name}
                 </Link>
-              ))}
-              <div className="pt-3 pb-1">
-                <Link
-                  href="/book"
-                  className="btn-primary w-full justify-center text-sm"
-                >
-                  Book a Service
-                </Link>
-              </div>
-            </div>
+              </motion.div>
+            ))}
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              style={{ marginTop: '20px', width: '80%' }}
+            >
+              <Link 
+                href="/book"
+                style={{
+                  display: 'block',
+                  textAlign: 'center',
+                  backgroundColor: '#2B8A7E',
+                  color: 'white',
+                  padding: '16px',
+                  borderRadius: '12px',
+                  fontSize: '18px',
+                  fontWeight: '600',
+                  fontFamily: 'var(--font-opensans)',
+                  textDecoration: 'none',
+                  boxShadow: '0 10px 15px -3px rgba(43, 138, 126, 0.4)'
+                }}
+              >
+                {cta}
+              </Link>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
-}
+};
+
+export default Navbar;

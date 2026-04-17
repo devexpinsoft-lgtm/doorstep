@@ -1,0 +1,366 @@
+{
+  "navbar": {
+    "links": [
+      {
+        "name": "Home",
+        "href": "/",
+        "size": "15.5px"
+      },
+      {
+        "name": "Services",
+        "href": "/services",
+        "size": "15.22px"
+      },
+      {
+        "name": "Pricing",
+        "href": "/pricing",
+        "size": "15.38px"
+      },
+      {
+        "name": "Providers",
+        "href": "/providers",
+        "size": "15.77px"
+      },
+      {
+        "name": "About",
+        "href": "/about",
+        "size": "16px"
+      }
+    ],
+    "cta": "Book Now"
+  },
+  "hero": {
+    "titleLine1": "Home services,",
+    "titleLine2": "handled.",
+    "subtitle": "Book trusted local professionals in minutes. No searching. No comparing. No stress.",
+    "checklist": [
+      {
+        "label": "Vetted providers",
+        "size": "13.85px"
+      },
+      {
+        "label": "Fast scheduling",
+        "size": "13.81px"
+      },
+      {
+        "label": "Satisfaction guaranteed",
+        "size": "13.87px"
+      }
+    ],
+    "description": "Unlike traditional marketplaces, Doorstep eliminates the need to browse, compare, and negotiate. We match you with the right provider instantly.",
+    "ctaText": "Book Your Service",
+    "image": "/images/hero-handyman.png",
+    "stats": [
+      {
+        "id": "rating",
+        "val": 4.9,
+        "label": "Average Rating",
+        "icon": "Star",
+        "decimals": 1
+      },
+      {
+        "id": "jobs",
+        "val": 10,
+        "suffix": "K+",
+        "label": "Jobs Completed",
+        "icon": "CheckCircle"
+      }
+    ],
+    "trustBar": [
+      {
+        "icon": "Shield",
+        "label": "Vetted Providers"
+      },
+      {
+        "icon": "Clock",
+        "label": "Fast Scheduling"
+      },
+      {
+        "icon": "CheckCircle",
+        "label": "Satisfaction Guaranteed"
+      },
+      {
+        "icon": "Star",
+        "label": "5-Star Rated"
+      }
+    ]
+  },
+  "whyDoorstep": {
+    "badge": "WHY DOORSTEP",
+    "title": "Why Doorstep?",
+    "subtitle": "We’re not another marketplace. We deliver what the market needs to be simpler, smarter, and fairer.",
+    "reasons": [
+      {
+        "icon": "Ban",
+        "title": "No Reselling",
+        "desc": [
+          "We connect you directly to",
+          "providers, no middlemen or",
+          "resellers."
+        ]
+      },
+      {
+        "icon": "Brain",
+        "title": "Instant Matching",
+        "desc": [
+          "Our system instantly",
+          "matches you with the best",
+          "provider for your needs."
+        ]
+      },
+      {
+        "icon": "ShieldCheck",
+        "title": "Vetted Professionals",
+        "desc": [
+          "All providers are background",
+          "checked, insured, and highly",
+          "rated."
+        ]
+      },
+      {
+        "icon": "DollarSign",
+        "title": "Transparent Pricing",
+        "desc": [
+          "Clear, upfront pricing with no",
+          "hidden fees or surprises."
+        ]
+      }
+    ]
+  },
+  "howItWorks": {
+    "badge": "PROCESS",
+    "title": "How It Works",
+    "description": "Getting help at home has never been easier. Three simple steps and you’re done.",
+    "steps": [
+      {
+        "icon": "MousePointer2",
+        "title": "1. Select Your Service & Time",
+        "desc": "Pick what you need and choose your preferred time slot."
+      },
+      {
+        "icon": "UserCheck",
+        "title": "2. We Assign a Trusted Provider",
+        "desc": "Our system instantly matches you with a vetted professional in your area."
+      },
+      {
+        "icon": "CheckCircle",
+        "title": "3. The Job Gets Done",
+        "desc": "Your provider arrives on schedule. Hassle-free, guaranteed."
+      }
+    ]
+  },
+  "trustedPartner": {
+    "badge": "ABOUT US",
+    "title": "Your trusted partner for home services",
+    "description": "Doorstep was founded with a simple mission: make it effortless to find reliable, affordable home service professionals. We’ve helped thousands of homeowners get the help they need from leaky faucets to full home makeovers.",
+    "image": "/images/clean-living-room.png",
+    "stats": [
+      {
+        "val": 10,
+        "suffix": "K+",
+        "label": "Jobs Completed"
+      },
+      {
+        "val": 500,
+        "suffix": "+",
+        "label": "Verified Pros"
+      },
+      {
+        "val": 4.9,
+        "suffix": "★",
+        "label": "Average Rating",
+        "decimals": 1
+      }
+    ],
+    "benefits": [
+      {
+        "icon": "ShieldCheck",
+        "title": "Trust & Safety",
+        "desc": "Every professional is background-checked and vetted before joining our platform."
+      },
+      {
+        "icon": "Heart",
+        "title": "Customer First",
+        "desc": "We’re obsessed with your satisfaction guaranteed on every service, every time."
+      },
+      {
+        "icon": "Award",
+        "title": "Quality Work",
+        "desc": "Only top-rated pros make the cut. We maintain the highest standards in the industry."
+      }
+    ]
+  },
+  "services": {
+    "badge": "SERVICES",
+    "title": "What do you need help with?",
+    "subtitle": "Select a service to get started",
+    "list": [
+      {
+        "name": "Lawn Care",
+        "price": "From $45",
+        "icon": "Trees",
+        "image": "/images/lawn-mowing.png"
+      },
+      {
+        "name": "Home Cleaning",
+        "price": "From $95",
+        "icon": "Sparkles",
+        "image": "/images/cleaning-service.png"
+      }
+    ]
+  },
+  "testimonials": {
+    "badge": "TESTIMONIALS",
+    "title": "What Our Customers Say",
+    "subtitle": "Don’t take our word for it—hear from homeowners who trust Doorstep.",
+    "list": [
+      {
+        "name": "Sarah M.",
+        "role": "Homeowner",
+        "initial": "S",
+        "content": "“Doorstep made finding a plumber so easy. The pro arrived on time, fixed the issue quickly, and the pricing was completely transparent. Highly recommend!”",
+        "stars": 5
+      },
+      {
+        "name": "James R.",
+        "role": "Property Manager",
+        "initial": "J",
+        "content": "“I manage 12 rental properties and Doorstep is my go-to for maintenance. The quality of work is consistently excellent and the booking process is seamless.”",
+        "stars": 5
+      },
+      {
+        "name": "Emily T.",
+        "role": "First-time User",
+        "initial": "E",
+        "content": "“I was skeptical at first, but the background-checked professionals and satisfaction guarantee gave me confidence. The cleaning service was outstanding.”",
+        "stars": 5
+      },
+      {
+        "name": "Daniel K.",
+        "role": "Homeowner",
+        "initial": "D",
+        "content": "“We used Doorstep for electrical, HVAC, and handyman services. Every single time, the experience has been top-notch.”",
+        "stars": 5
+      },
+      {
+        "name": "Lisa P.",
+        "role": "Homeowner",
+        "initial": "L",
+        "content": "“The same-day availability is a game changer. Had an emergency plumbing issue and a pro was at my door within 2 hours. Amazing service!”",
+        "stars": 5
+      },
+      {
+        "name": "Michael W.",
+        "role": "Business Owner",
+        "initial": "M",
+        "content": "“We use Doorstep for our office maintenance needs. The professionals are always courteous and skilled. The Stripe payments mean invoicing is breezy.”",
+        "stars": 5
+      }
+    ]
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "How are your professionals vetted?",
+        "answer": "Every professional undergoes a rigorous background check, insurance verification, and interview process."
+      },
+      {
+        "question": "What happens if I’m not satisfied?",
+        "answer": "Our Doorstep Guarantee means if you're not happy, we'll work with you to make it right, including re-performing the service."
+      },
+      {
+        "question": "How does pricing work?",
+        "answer": "We provide transparent, flat-rate pricing based on the service type and size of the job. No hidden fees."
+      },
+      {
+        "question": "Can I book same-day service?",
+        "answer": "Yes! Depending on provider availability in your area, you can often book services for the same day."
+      },
+      {
+        "question": "Is my payment information secure?",
+        "answer": "Absolutely. We use Stripe for all payment processing, ensuring your data is encrypted and secure."
+      },
+      {
+        "question": "Can I cancel or reschedule?",
+        "answer": "You can cancel or reschedule easily through our platform. We ask for 24 hours notice to avoid a late fee."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to get started?",
+    "description": "Book a service in under 60 seconds. No commitments, transparent pricing, and satisfaction guaranteed on every single job.",
+    "buttonText": "Get Started Now",
+    "image": "/images/family-happy.png"
+  },
+  "footer": {
+    "description": "The smarter way to handle your home. Book trusted local professionals in minutes.",
+    "links": [
+      {
+        "title": "Services",
+        "items": [
+          {
+            "name": "Lawn Care",
+            "href": "/services#lawn-care"
+          },
+          {
+            "name": "Cleaning",
+            "href": "/services#home-cleaning"
+          },
+          {
+            "name": "Plumbing",
+            "href": "/services"
+          },
+          {
+            "name": "Electrical",
+            "href": "/services"
+          }
+        ]
+      },
+      {
+        "title": "Company",
+        "items": [
+          {
+            "name": "About Us",
+            "href": "#"
+          },
+          {
+            "name": "Careers",
+            "href": "#"
+          },
+          {
+            "name": "Privacy Policy",
+            "href": "#"
+          },
+          {
+            "name": "Terms of Service",
+            "href": "#"
+          }
+        ]
+      },
+      {
+        "title": "Support",
+        "items": [
+          {
+            "name": "Help Center",
+            "href": "#"
+          },
+          {
+            "name": "Contact Us",
+            "href": "#"
+          },
+          {
+            "name": "FAQ",
+            "href": "#"
+          },
+          {
+            "name": "Trust & Safety",
+            "href": "#"
+          }
+        ]
+      }
+    ],
+    "copyright": "© 2026 Doorstep Home Services Inc. All rights reserved."
+  }
+}
