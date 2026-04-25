@@ -23,7 +23,6 @@ const MissionObjectives = () => {
               title={obj.title}
               description={obj.desc}
               delay={idx * 0.1}
-              variant="solid"
             />
           ))}
         </div>

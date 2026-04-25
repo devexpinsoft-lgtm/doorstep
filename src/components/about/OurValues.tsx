@@ -63,7 +63,6 @@ const OurValues = () => {
               title={val.title}
               description={val.desc}
               delay={idx * 0.1}
-              variant="solid"
             />
           ))}
         </div>
