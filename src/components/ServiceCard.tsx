@@ -51,7 +51,7 @@ export default function ServiceCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="card p-7 group flex flex-col h-full border border-gray-100"
+      className="ds-card p-7 group flex flex-col h-full"
     >
       {/* Icon */}
       <div className="w-14 h-14 rounded-2xl bg-brand-gradient flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 shadow-brand">

@@ -6,9 +6,9 @@ interface CardProps {
   hover?: boolean;
 }
 
-const Card = ({ children, className = "", hover = true }: CardProps) => {
+const Card = ({ children, className = "" }: CardProps) => {
   return (
-    <div className={`card ${hover ? "card-hover" : ""} ${className}`}>
+    <div className={`ds-card ${className}`}>
       {children}
     </div>
   );

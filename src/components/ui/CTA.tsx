@@ -118,16 +118,16 @@ const CTA = ({
               alignItems: 'center',
               backgroundColor: '#FFFFFF',
               color: '#2B8A7E',
-              padding: '14px 40px',
-              borderRadius: '6px',
-              fontSize: '16px',
-              fontWeight: '600',
+              padding: '16px 48px',
+              borderRadius: '8px',
+              fontSize: '18px',
+              fontWeight: '700',
               textDecoration: 'none',
               fontFamily: 'var(--font-montserrat)',
               lineHeight: '22px',
               cursor: 'pointer',
               transition: 'all 0.3s ease',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.2)'
+              boxShadow: '0 10px 20px rgba(0,0,0,0.15)'
             }}
           >
             {buttonText}

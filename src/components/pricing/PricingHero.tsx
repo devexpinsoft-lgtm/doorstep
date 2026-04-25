@@ -8,7 +8,8 @@ const PricingHero = () => {
   const { badge, titleLine1, titleLine2, description } = pricingData.hero;
 
   return (
-    <section className="ds-section" style={{ paddingTop: '160px', paddingBottom: '80px', backgroundColor: '#F6F4F1' }}>
+    <section className="ds-section" style={{ paddingTop: '160px', paddingBottom: '80px', backgroundColor: 'var(--bg-main)', position: 'relative', overflow: 'hidden' }}>
+      <div className="ds-blob ds-blob-teal" style={{ top: '-10%', left: '-5%', opacity: 0.05 }} />
       <div className="ds-container">
         <div 
           className="pricing-hero-grid"

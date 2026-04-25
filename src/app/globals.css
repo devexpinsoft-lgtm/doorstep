@@ -1,19 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@400;600;700&family=Roboto:wght@400&display=swap");
 
 :root {
-  /* Colors - Exact from Design Specs */
+  /* Colors - Vibrant Brand Palette */
   --primary: #2B8A7E;
-  --primary-light: #DFEEEF;
-  --primary-bg: #E9F5F3;
-  --secondary: #1B2B3A;
+  --primary-light: #EAF6F5;
+  --primary-bg: #F0FAF8;
+  --brand-blue: #1B4FD8;
+  --brand-navy: #1E2D5A;
+  --secondary: #1E2D5A;
   --text-main: #1B2B3A;
   --text-muted: #6B7A8F;
   --text-light: #A1B0BD;
-  --bg-main: #FCFCFD;
-  --bg-alt: #F4F7FB;
-  --border: #D9E2EC;
-  --border-light: #E5E7EB;
+  --bg-main: #FFFFFF;
+  --bg-alt: #F8FAFC;
+  --bg-teal-tint: #F0FAF8;
+  --bg-blue-tint: #F0F4FF;
+  --border: #E2E8F0;
+  --border-light: #F1F5F9;
+  --border-brand: rgba(43, 138, 126, 0.15);
   --white: #FFFFFF;
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.4);
 
   /* Typography */
   --font-montserrat: "Montserrat", sans-serif;
@@ -218,9 +225,58 @@ a {
 }
 
 .ds-card {
-  background: white;
-  border: 1px solid var(--border-light);
+  background: linear-gradient(180deg, #FFFFFF 0%, var(--bg-teal-tint) 100%);
+  border: 1px solid var(--border-brand);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 10px 30px rgba(30, 45, 90, 0.04), inset 0 0 40px rgba(255, 255, 255, 1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
 }
+
+.ds-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--brand-blue) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ds-card:hover::before {
+  opacity: 1;
+}
+
+.ds-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.ds-gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--brand-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ds-blob {
+  position: absolute;
+  filter: blur(100px);
+  z-index: 0;
+  opacity: 0.12;
+  pointer-events: none;
+  border-radius: 50%;
+  width: 400px;
+  height: 400px;
+}
+
+.ds-blob-teal { background-color: var(--primary); }
+.ds-blob-blue { background-color: var(--brand-blue); }
 
 /* Animation utilities */
 .ds-animate-fade-up {

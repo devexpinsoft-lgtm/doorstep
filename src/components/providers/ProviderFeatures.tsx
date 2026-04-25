@@ -17,7 +17,7 @@ const ProviderFeatures = () => {
   const { title, highlight, list } = providerData.features;
 
   return (
-    <section className="ds-section" style={{ backgroundColor: 'white', padding: '100px 0 40px 0' }}>
+    <section className="ds-section" style={{ backgroundColor: 'var(--bg-teal-tint)', padding: '100px 0 40px 0', overflow: 'hidden' }}>
       <div className="ds-container">
         {/* Section Header */}
         <motion.div 

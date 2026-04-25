@@ -9,7 +9,7 @@ const ProviderSteps = () => {
   const { title, highlight, steps } = providerData.howItWorks;
 
   return (
-    <section className="ds-section" style={{ backgroundColor: '#F8FAFC', padding: '40px 0 100px 0' }}>
+    <section className="ds-section" style={{ backgroundColor: 'var(--bg-blue-tint)', padding: '40px 0 100px 0', overflow: 'hidden' }}>
       <div className="ds-container">
         {/* Section Header */}
         <motion.div 
@@ -33,8 +33,8 @@ const ProviderSteps = () => {
             {title} <span style={{ color: '#2B8A7E' }}>{highlight}</span>
           </motion.h2>
         </motion.div>
-
-        {/* Steps Grid - Using FeatureCard ghost variant */}
+ 
+        {/* Steps Grid - Standardized Cards */}
         <div className="ds-grid-3" style={{ maxWidth: '1200px', margin: '0 auto' }}>
           {steps.map((step, idx) => (
             <FeatureCard
@@ -42,7 +42,6 @@ const ProviderSteps = () => {
               icon={ClipboardCheck}
               title={`${step.step}: ${step.title}`}
               description={step.desc}
-              variant="ghost"
               delay={idx * 0.15}
             />
           ))}

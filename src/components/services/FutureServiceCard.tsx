@@ -26,15 +26,11 @@ const FutureServiceCard = ({ service }: FutureServiceCardProps) => {
       initial="initial"
       whileInView="animate"
       viewport={{ once: true }}
+      className="ds-card"
       style={{
-        backgroundColor: 'white',
-        borderRadius: '12px',
-        overflow: 'hidden',
-        border: 'none',
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: 'none',
-        transition: 'all 0.3s ease'
+        cursor: 'pointer'
       }}
       whileHover="hover"
     >
@@ -79,23 +75,23 @@ const FutureServiceCard = ({ service }: FutureServiceCardProps) => {
       <div style={{ padding: '32px 20px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
         <MIcon 
           size={32}
-          strokeWidth={1.5}
-          initial={{ fill: 'rgba(43, 138, 126, 0)', color: '#2B8A7E' }}
+          strokeWidth={2}
+          initial={{ color: '#2B8A7E' }}
           variants={{
-            hover: { y: -8, scale: 1.15, rotate: [0, -10, 10, 0], fill: 'rgba(43, 138, 126, 1)' }
+            hover: { y: -8, scale: 1.15, rotate: [0, -10, 10, 0], color: '#1B4FD8' }
           }}
           transition={{ duration: 0.4 }}
         />
         <div>
             <motion.h3 
-              whileHover={{ y: -2, textShadow: '0 0 10px rgba(43, 138, 126, 0.2)' }}
+              whileHover={{ y: -2 }}
               style={{ 
-                fontSize: '14px', 
-                fontWeight: '600', 
-                color: '#172535', 
-                marginBottom: '4px', 
-                fontFamily: 'var(--font-opensans)',
-                lineHeight: '16px',
+                fontSize: '16px', 
+                fontWeight: '700', 
+                color: 'var(--secondary)', 
+                marginBottom: '6px', 
+                fontFamily: 'var(--font-montserrat)',
+                lineHeight: '20px',
                 cursor: 'default',
                 display: 'inline-block'
               }}>
@@ -103,14 +99,15 @@ const FutureServiceCard = ({ service }: FutureServiceCardProps) => {
             </motion.h3>
           <motion.p 
             variants={{
-              hover: { color: '#2B8A7E' }
+              hover: { color: '#2B8A7E', scale: 1.05 }
             }}
             style={{
-              color: '#6B7A8F',
-              fontSize: '10px',
-              fontWeight: '400',
-              fontFamily: 'var(--font-opensans)',
-              lineHeight: '16px'
+              color: 'var(--primary)',
+              fontSize: '12px',
+              fontWeight: '700',
+              fontFamily: 'var(--font-montserrat)',
+              lineHeight: '16px',
+              transition: 'all 0.3s ease'
             }}
           >
             {service.price}

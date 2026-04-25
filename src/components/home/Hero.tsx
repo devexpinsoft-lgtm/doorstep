@@ -37,6 +37,9 @@ const Hero = () => {
 
   return (
     <section className="ds-section" style={{ paddingTop: '160px', paddingBottom: '0', backgroundColor: 'var(--bg-main)', position: 'relative', overflow: 'hidden' }}>
+      {/* Background Blobs for Depth */}
+      <div className="ds-blob ds-blob-teal" style={{ top: '-10%">', right: '-5%', opacity: 0.08 }} />
+      <div className="ds-blob ds-blob-blue" style={{ bottom: '10%', left: '-10%', opacity: 0.1 }} />
       <div className="ds-container">
         <div className="hero-grid" style={{ alignItems: 'center', position: 'relative', width: '100%' }}>
           <style jsx>{`
@@ -109,7 +112,7 @@ const Hero = () => {
           >
             <motion.h1
               className="hero-title"
-              whileHover={{ y: -3, textShadow: '0 0 20px rgba(43, 138, 126, 0.3)' }}
+              whileHover={{ y: -3 }}
               style={{
                 fontSize: '54px',
                 fontWeight: '900',
@@ -117,16 +120,16 @@ const Hero = () => {
                 marginBottom: '24px',
                 letterSpacing: '-2.5px',
                 fontFamily: 'var(--font-montserrat)',
-                color: '#1B2B3A',
+                color: 'var(--secondary)',
                 cursor: 'default',
                 display: 'inline-block'
               }}>
-              <span style={{ color: '#1B2B3A' }}>{titleLine1}</span><br />
+              <span style={{ color: 'var(--secondary)' }}>{titleLine1}</span><br />
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.6 }}
-                style={{ color: '#2B8A7E' }}
+                className="ds-gradient-text"
               >
                 {titleLine2}
               </motion.span>
@@ -155,30 +158,31 @@ const Hero = () => {
                 >
                   <motion.div
                     variants={{
-                      hover: { backgroundColor: '#2B8A7E', scale: 1.1 }
+                      hover: { scale: 1.15 }
                     }}
                     style={{
                       width: '22px',
                       height: '22px',
-                      color: '#2B8A7E',
-                      backgroundColor: '#EAF6F5',
+                      color: 'white',
+                      background: 'linear-gradient(135deg, #2B8A7E 0%, #1B4FD8 100%)',
                       borderRadius: '50%',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
-                      transition: 'all 0.3s ease'
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 4px 10px rgba(43, 138, 126, 0.2)'
                     }}
                   >
-                    <motion.div variants={{ hover: { color: '#FFFFFF' } }} style={{ display: 'flex' }}>
+                    <div style={{ display: 'flex' }}>
                       <Check size={14} strokeWidth={4} />
-                    </motion.div>
+                    </div>
                   </motion.div>
                   <motion.span
-                    variants={{ hover: { color: '#2B8A7E', x: 5 } }}
+                    variants={{ hover: { color: 'var(--primary)', x: 5 } }}
                     style={{
                       fontSize: item.size,
-                      color: '#1B2B3A',
+                      color: 'var(--secondary)',
                       fontFamily: 'var(--font-opensans)',
                       fontWeight: '500',
                       transition: 'all 0.3s ease'
@@ -209,22 +213,22 @@ const Hero = () => {
 
               <motion.a
                 href="/book"
-                whileHover={{ scale: 1.03, boxShadow: "0 10px 20px rgba(43, 138, 126, 0.15)" }}
+                whileHover={{ scale: 1.03, boxShadow: "0 10px 25px rgba(43, 138, 126, 0.3)" }}
                 whileTap={{ scale: 0.97 }}
                 style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '10px',
-                  backgroundColor: 'var(--primary)',
+                  background: 'linear-gradient(135deg, #2B8A7E 0%, #1B4FD8 100%)',
                   color: 'white',
-                  padding: '12px 28px',
+                  padding: '14px 32px',
                   borderRadius: '6px',
                   fontSize: '16px',
-                  fontWeight: '600',
+                  fontWeight: '700',
                   textDecoration: 'none',
-                  boxShadow: '0px 1px 6px rgba(0, 0, 0, 0.15)',
+                  boxShadow: '0px 4px 15px rgba(43, 138, 126, 0.2)',
                   fontFamily: 'var(--font-montserrat)',
-                  transition: 'background-color 0.2s ease'
+                  transition: 'all 0.3s ease'
                 }}
               >
                 {ctaText}
@@ -312,13 +316,13 @@ const Hero = () => {
                       left: isTop ? 'auto' : '-20px',
                       zIndex: 10,
                       backgroundColor: 'white', 
-                      borderRadius: '10px', 
-                      padding: '8px 16px',
-                      boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
-                      border: '1px solid #EEEEEE',
+                      borderRadius: '12px', 
+                      padding: '8px 20px',
+                      boxShadow: '0px 10px 25px rgba(30, 45, 90, 0.1)',
+                      border: '1px solid rgba(43, 138, 126, 0.15)',
                       cursor: 'default'
                     }}
-                    whileHover={{ y: -5, boxShadow: '0px 15px 35px rgba(43, 138, 126, 0.12)' }}
+                    whileHover={{ y: -5, boxShadow: '0px 15px 35px rgba(43, 138, 126, 0.2)' }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                       <span style={{ fontSize: '14px', fontWeight: '700', color: '#000', fontFamily: 'var(--font-montserrat)' }}>
@@ -341,7 +345,7 @@ const Hero = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 1.2, duration: 0.5 }}
-        style={{ width: '100%', marginTop: '100px', backgroundColor: '#F4F7FB', borderTop: '1px solid #E0E5EB', padding: '24px 0' }}
+        style={{ width: '100%', marginTop: '100px', backgroundColor: 'var(--bg-alt)', borderTop: '1px solid var(--border-light)', padding: '32px 0' }}
       >
         <div className="ds-container ds-flex ds-justify-between ds-items-center" style={{ flexWrap: 'wrap', gap: '32px' }}>
           {(trustBar as HeroTrust[]).map((item, idx) => {

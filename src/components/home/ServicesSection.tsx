@@ -15,7 +15,10 @@ const ServicesSection = () => {
   const { badge, title, subtitle, list } = homeData.services;
 
   return (
-    <section className="ds-section" style={{ backgroundColor: '#F4F7FB', padding: '100px 0' }}>
+    <section className="ds-section" style={{ backgroundColor: 'var(--bg-teal-tint)', padding: '100px 0', overflow: 'hidden' }}>
+      {/* Background Blobs for Vibrancy */}
+      <div className="ds-blob ds-blob-teal" style={{ top: '-100px', left: '-100px' }} />
+      <div className="ds-blob ds-blob-blue" style={{ bottom: '50px', right: '-100px' }} />
       <div className="ds-container">
 
         {/* Pagination Dots */}
@@ -45,19 +48,20 @@ const ServicesSection = () => {
             display: 'inline-flex',
             alignItems: 'center',
             justifyContent: 'center',
-            backgroundColor: '#EAF6F5',
+            backgroundColor: 'rgba(43, 138, 126, 0.1)',
             borderRadius: '100px',
             padding: '4px 16px',
-            marginBottom: '16px'
+            marginBottom: '16px',
+            border: '1px solid rgba(43, 138, 126, 0.2)'
           }}>
-            <span style={{ fontSize: '11px', fontWeight: '600', color: '#2B8A7E', fontFamily: 'var(--font-opensans)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{badge}</span>
+            <span style={{ fontSize: '11px', fontWeight: '700', color: '#2B8A7E', fontFamily: 'var(--font-opensans)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{badge}</span>
           </div>
           <div style={{ width: '100%' }}>
             <motion.h2
-              whileHover={{ y: -3, textShadow: '0 0 15px rgba(43, 138, 126, 0.3)' }}
-              style={{ fontSize: '24px', fontWeight: '700', color: '#1B2B3A', marginBottom: '12px', fontFamily: 'var(--font-montserrat)', lineHeight: '32px', cursor: 'default', display: 'inline-block' }}
+              whileHover={{ y: -3 }}
+              style={{ fontSize: '32px', fontWeight: '800', color: 'var(--secondary)', marginBottom: '12px', fontFamily: 'var(--font-montserrat)', lineHeight: '42px', cursor: 'default', display: 'inline-block' }}
             >
-              {title}
+              {title.split(' ').map((word, i) => i === title.split(' ').length - 1 ? <span key={i} className="ds-gradient-text">{word}</span> : word + ' ')}
             </motion.h2>
           </div>
           <p style={{ fontSize: '13.5px', fontWeight: '500', color: '#6B7A8F', fontFamily: 'var(--font-opensans)', lineHeight: '1.6' }}>
@@ -95,6 +99,7 @@ const ServicesSection = () => {
               >
                 <Link href="/services" style={{ textDecoration: 'none' }}>
                   <motion.div
+                    className="ds-card"
                     variants={{
                       hover: { y: -15, boxShadow: "0 30px 60px rgba(43, 138, 126, 0.15)", borderColor: "#2B8A7E" }
                     }}
@@ -102,13 +107,11 @@ const ServicesSection = () => {
                       overflow: 'hidden',
                       display: 'flex',
                       flexDirection: 'column',
-                      border: '1px solid #E5E7EB',
-                      borderRadius: '24px',
-                      transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                       backgroundColor: 'white',
                       height: 'auto',
                       minHeight: '420px',
-                      position: 'relative'
+                      position: 'relative',
+                      zIndex: 1
                     }}
                   >
                     <div style={{ position: 'relative', height: '240px', width: '100%', overflow: 'hidden' }}>

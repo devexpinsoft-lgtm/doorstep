@@ -10,10 +10,12 @@ const perks = [
   { icon: Clock, text: "Same-day availability" },
   { icon: CheckCircle, text: "Satisfaction guarantee" },
 ];
-
 export default function BookingPageContent() {
   return (
-    <main style={{ minHeight: '100vh', backgroundColor: '#F8FAFC', position: 'relative', overflow: 'hidden' }}>
+    <main style={{ minHeight: '100vh', backgroundColor: 'var(--bg-main)', position: 'relative', overflow: 'hidden' }}>
+      {/* Background Blobs for Atmosphere */}
+      <div className="ds-blob ds-blob-teal" style={{ top: '-5%', right: '-5%', opacity: 0.1 }} />
+      <div className="ds-blob ds-blob-blue" style={{ bottom: '10%', left: '-5%', opacity: 0.08 }} />
       <style jsx>{`
         .booking-layout {
           display: grid;
@@ -33,9 +35,10 @@ export default function BookingPageContent() {
           background-color: white;
           border-radius: 32px;
           padding: 48px;
-          box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.08), 0 20px 40px -15px rgba(0, 0, 0, 0.04);
-          border: 1px solid #F1F5F9;
+          box-shadow: 0 40px 100px -20px rgba(43, 138, 126, 0.1), 0 20px 40px -15px rgba(0, 0, 0, 0.04);
+          border: 1px solid var(--border-brand);
           margin-top: 10px;
+          z-index: 2;
         }
 
         @media (max-width: 991px) {
@@ -97,8 +100,8 @@ export default function BookingPageContent() {
       `}</style>
       
       {/* Background patterns */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '700px', background: 'linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%)', zIndex: 0 }} />
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '700px', backgroundImage: 'radial-gradient(#2B8A7E12 1px, transparent 1px)', backgroundSize: '40px 40px', zIndex: 0 }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '700px', background: 'linear-gradient(135deg, var(--bg-main) 0%, var(--bg-teal-tint) 100%)', zIndex: 0 }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '700px', backgroundImage: 'radial-gradient(rgba(43, 138, 126, 0.1) 1px, transparent 1px)', backgroundSize: '40px 40px', zIndex: 0 }} />
 
       <div className="ds-container" style={{ position: 'relative', zIndex: 10 }}>
         <div className="booking-layout">
@@ -110,12 +113,12 @@ export default function BookingPageContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div style={{ backgroundColor: '#EAF6F5', color: '#2B8A7E', padding: '6px 18px', borderRadius: '100px', display: 'inline-block', fontSize: '11px', fontWeight: '800', fontFamily: 'var(--font-montserrat)', marginBottom: '24px', letterSpacing: '0.15em' }}>
+              <div style={{ backgroundColor: 'rgba(43, 138, 126, 0.1)', color: '#2B8A7E', padding: '6px 18px', border: '1px solid rgba(43, 138, 126, 0.2)', borderRadius: '100px', display: 'inline-block', fontSize: '11px', fontWeight: '800', fontFamily: 'var(--font-montserrat)', marginBottom: '24px', letterSpacing: '0.15em' }}>
                 SECURE BOOKING HUB
               </div>
               
-              <h1 className="hero-title" style={{ fontSize: '56px', fontWeight: '900', color: '#1B2B3A', fontFamily: 'var(--font-montserrat)', letterSpacing: '-2.5px', lineHeight: '1.05', marginBottom: '32px' }}>
-                Finalize Your <br /> <span style={{ color: '#2B8A7E' }}>Booking</span>
+              <h1 className="hero-title" style={{ fontSize: '56px', fontWeight: '900', color: 'var(--secondary)', fontFamily: 'var(--font-montserrat)', letterSpacing: '-2.5px', lineHeight: '1.05', marginBottom: '32px' }}>
+                Finalize Your <br /> <span className="ds-gradient-text">Booking</span>
               </h1>
             </motion.div>
           </div>
@@ -131,7 +134,7 @@ export default function BookingPageContent() {
               <h2 style={{ fontSize: '24px', fontWeight: '900', color: '#1B2B3A', fontFamily: 'var(--font-montserrat)', marginBottom: '8px' }}>
                 Quick Reservations
               </h2>
-              <div style={{ width: '40px', height: '4px', backgroundColor: '#34D399', borderRadius: '100px' }} />
+              <div style={{ width: '40px', height: '4px', background: 'linear-gradient(135deg, #2B8A7E 0%, #1B4FD8 100%)', borderRadius: '100px' }} />
             </div>
             
             <BookingForm />
@@ -155,7 +158,7 @@ export default function BookingPageContent() {
                   { title: "Pay Post-Service", desc: "Only pay when you're 100% satisfied with the result." }
                 ].map((item, i) => (
                   <div key={i} className="process-item" style={{ display: 'flex', gap: '16px' }}>
-                    <div style={{ flexShrink: 0, width: '28px', height: '28px', borderRadius: '50%', backgroundColor: '#2B8A7E', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: '800' }}>{i + 1}</div>
+                    <div style={{ flexShrink: 0, width: '28px', height: '28px', borderRadius: '50%', background: 'linear-gradient(135deg, #2B8A7E 0%, #1B4FD8 100%)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '13px', fontWeight: '800', boxShadow: '0 4px 10px rgba(43, 138, 126, 0.3)' }}>{i + 1}</div>
                     <div>
                       <h4 style={{ fontSize: '15px', fontWeight: '700', color: '#1B2B3A', marginBottom: '2px', fontFamily: 'var(--font-montserrat)' }}>{item.title}</h4>
                       <p style={{ fontSize: '14px', color: '#64748B', lineHeight: '20px', fontFamily: 'var(--font-opensans)' }}>{item.desc}</p>

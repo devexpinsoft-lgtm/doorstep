@@ -10,9 +10,9 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          teal: "#00C49A",
-          "teal-light": "#00D4AA",
-          "teal-dark": "#00A882",
+          teal: "#2B8A7E",
+          "teal-light": "#3AA598",
+          "teal-dark": "#1F695E",
           blue: "#1B4FD8",
           "blue-light": "#2563EB",
           "blue-dark": "#1340B8",
@@ -38,9 +38,9 @@ const config: Config = {
         poppins: ["Poppins", "ui-sans-serif"],
       },
       backgroundImage: {
-        "brand-gradient": "linear-gradient(135deg, #00C49A 0%, #1B4FD8 100%)",
+        "brand-gradient": "linear-gradient(135deg, #2B8A7E 0%, #1B4FD8 100%)",
         "brand-gradient-reverse":
-          "linear-gradient(135deg, #1B4FD8 0%, #00C49A 100%)",
+          "linear-gradient(135deg, #1B4FD8 0%, #2B8A7E 100%)",
         "hero-gradient":
           "linear-gradient(135deg, #0f1e3c 0%, #1E2D5A 50%, #162248 100%)",
         "section-gradient":

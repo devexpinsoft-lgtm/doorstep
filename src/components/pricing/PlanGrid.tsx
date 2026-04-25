@@ -5,7 +5,7 @@ import pricingData from "../../data/pricing.json";
 
 const PlanGrid = () => {
   return (
-    <section className="ds-section" style={{ padding: '40px 0 40px', backgroundColor: '#FCFAF6' }}>
+    <section className="ds-section" style={{ padding: '40px 0 40px', backgroundColor: 'var(--bg-teal-tint)', overflow: 'hidden' }}>
       <div className="ds-container">
         <div className="pricing-grid">
           <style jsx>{`

@@ -7,7 +7,6 @@ interface FeatureCardProps {
   icon: LucideIcon;
   title: string;
   description: string;
-  variant?: "solid" | "ghost";
   primaryColor?: string;
   backgroundSecondary?: string;
   delay?: number;
@@ -18,13 +17,11 @@ const FeatureCard = ({
   icon: Icon,
   title,
   description,
-  variant = "solid",
   primaryColor = "#2B8A7E",
-  backgroundSecondary = "#E9F5F3",
+  backgroundSecondary = "rgba(43, 138, 126, 0.1)",
   delay = 0,
   maxWidth = "100%"
 }: FeatureCardProps) => {
-  const isGhost = variant === "ghost";
 
   return (
     <motion.div
@@ -37,30 +34,24 @@ const FeatureCard = ({
         ease: [0.22, 1, 0.36, 1] 
       }}
       whileHover="hover"
+      className="ds-card"
       style={{
         width: "100%",
         maxWidth: maxWidth,
         height: "auto",
-        backgroundColor: isGhost ? "transparent" : "white",
-        borderRadius: "24px",
         padding: "32px 24px",
-        border: "1px solid",
-        borderColor: isGhost ? "transparent" : "#F1F5F9",
         textAlign: "center",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        cursor: "pointer",
-        transition: "all 0.5s cubic-bezier(0.22, 1, 0.36, 1)",
-        boxShadow: isGhost ? "none" : "0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)"
+        cursor: "pointer"
       }}
       variants={{
         hover: {
           y: -12,
-          backgroundColor: "white",
           borderColor: primaryColor,
-          boxShadow: "0 30px 60px -12px rgba(50, 50, 93, 0.08), 0 18px 36px -18px rgba(0, 0, 0, 0.1)"
+          boxShadow: "0 30px 60px -12px rgba(43, 138, 126, 0.15)"
         }
       }}
     >

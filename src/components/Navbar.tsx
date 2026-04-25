@@ -30,6 +30,7 @@ const Navbar = () => {
   return (
     <>
       <nav 
+        className="ds-glass"
         style={{
           position: 'fixed',
           top: 0,
@@ -37,10 +38,7 @@ const Navbar = () => {
           right: 0,
           height: '68px',
           zIndex: 1001,
-          backgroundColor: 'rgba(255, 255, 255, 1)',
-          backdropFilter: 'blur(10px)',
           transition: 'all 0.3s ease',
-          borderBottom: '1px solid #D9E2EC'
         }}
       >
         <div className="ds-container ds-flex ds-justify-between ds-items-center" style={{ height: '100%', position: 'relative' }}>
@@ -103,18 +101,18 @@ const Navbar = () => {
           <div className="ds-hide-mobile">
             <motion.a
               href="/book"
-              whileHover={{ scale: 1.05, boxShadow: "0 4px 10px rgba(43, 138, 126, 0.2)" }}
+              whileHover={{ scale: 1.05, boxShadow: "0 4px 15px rgba(43, 138, 126, 0.3)" }}
               whileTap={{ scale: 0.95 }}
               style={{
-                backgroundColor: '#2B8A7E',
+                background: 'linear-gradient(135deg, #2B8A7E 0%, #1B4FD8 100%)',
                 color: 'white',
-                padding: '8px 20px',
+                padding: '8px 24px',
                 borderRadius: '6px',
-                fontSize: '16px', // Updated from 14px
+                fontSize: '16px',
                 fontWeight: '600',
                 fontFamily: 'var(--font-opensans)',
                 textDecoration: 'none',
-                boxShadow: '0px 1px 6px rgba(0, 0, 0, 0.15)'
+                boxShadow: '0px 4px 10px rgba(43, 138, 126, 0.2)'
               }}
             >
               {cta}

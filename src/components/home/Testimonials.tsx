@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import React from "react";
-import { Star, Quote, ChevronLeft, ChevronRight, ShieldCheck, CreditCard, Sparkles } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import homeData from "../../data/home.json";
-import Link from "next/link";
-import Image from "next/image";
 
 const Testimonials = () => {
   const { badge, title, highlight, description, list } = homeData.testimonials;
@@ -20,7 +18,10 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="ds-section" id="testimonials" style={{ backgroundColor: 'white', padding: '100px 0' }}>
+    <section className="ds-section" id="testimonials" style={{ backgroundColor: 'var(--bg-blue-tint)', padding: '100px 0', overflow: 'hidden' }}>
+      {/* Background Blobs for Atmosphere */}
+      <div className="ds-blob ds-blob-blue" style={{ top: '10%', left: '-5%', opacity: 0.1 }} />
+      <div className="ds-blob ds-blob-teal" style={{ bottom: '5%', right: '-5%', opacity: 0.08 }} />
       <div className="ds-container">
         {/* Section Header */}
         <motion.div 
@@ -34,22 +35,23 @@ const Testimonials = () => {
             display: 'inline-flex',
             alignItems: 'center', 
             justifyContent: 'center',
-            backgroundColor: '#EAF6F5', 
+            backgroundColor: 'rgba(43, 138, 126, 0.1)', 
             borderRadius: '100px', 
             padding: '4px 16px',
-            marginBottom: '16px'
+            marginBottom: '16px',
+            border: '1px solid rgba(43, 138, 126, 0.2)'
           }}>
-            <span style={{ fontSize: '11px', fontWeight: '600', color: '#2B8A7E', fontFamily: 'var(--font-opensans)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{badge}</span>
+            <span style={{ fontSize: '11px', fontWeight: '700', color: '#2B8A7E', fontFamily: 'var(--font-opensans)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{badge}</span>
           </div>
           <h2 style={{ 
             fontSize: '32px', 
-            fontWeight: '700', 
+            fontWeight: '800', 
             lineHeight: '40px', 
             marginBottom: '16px', 
             fontFamily: 'var(--font-montserrat)', 
-            color: '#1B2B3A' 
+            color: 'var(--secondary)' 
           }}>
-            {title} <span style={{ color: '#2B8A7E' }}>{highlight}</span>
+            {title} <span className="ds-gradient-text">{highlight}</span>
           </h2>
           <p style={{ fontSize: '15px', color: '#6B7A8F', maxWidth: '600px', margin: '0 auto', fontFamily: 'var(--font-opensans)', fontWeight: '400' }}>
             {description}
@@ -98,7 +100,7 @@ const Testimonials = () => {
             .control-btn:hover {
               border-color: #2B8A7E;
               color: #2B8A7E;
-              box-shadow: 0 4px 12px rgba(43, 138, 126, 0.1);
+              box-shadow: 0 4px 12px rgba(43, 138, 126, 0.2);
             }
             .dot {
               width: 8px;
@@ -145,7 +147,7 @@ const Testimonials = () => {
                 </p>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: '#E9F5F3', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2B8A7E', fontWeight: '700', fontSize: '18px' }}>
+                <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'var(--primary-bg)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2B8A7E', fontWeight: '700', fontSize: '18px' }}>
                   {list[activeIndex].initial}
                 </div>
                 <div>
@@ -193,7 +195,7 @@ const Testimonials = () => {
             return (
               <motion.div 
                 key={idx} 
-                className="testimonial-card"
+                className="testimonial-card ds-card"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -203,12 +205,9 @@ const Testimonials = () => {
                   padding: '42px 34px', 
                   backgroundColor: 'white',
                   borderRadius: '24px',
-                  border: '1px solid #F1F5F9',
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.02)',
                   display: 'flex',
                   flexDirection: 'column',
                   justifyContent: 'space-between',
-                  transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                   cursor: 'default',
                   position: 'relative'
                 }}
@@ -216,7 +215,7 @@ const Testimonials = () => {
                   hover: { 
                     y: -10, 
                     borderColor: "#2B8A7E",
-                    boxShadow: '0 20px 40px rgba(43, 138, 126, 0.1)' 
+                    boxShadow: '0 20px 40px rgba(43, 138, 126, 0.15)' 
                   }
                 }}
               >
@@ -259,7 +258,7 @@ const Testimonials = () => {
                       style={{
                         width: '32px',
                         height: '32px',
-                        backgroundColor: '#E9F5F3',
+                        backgroundColor: 'var(--primary-bg)',
                         color: '#2B8A7E',
                         borderRadius: '50%',
                         display: 'flex',

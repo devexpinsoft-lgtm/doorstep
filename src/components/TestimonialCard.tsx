@@ -28,7 +28,7 @@ export default function TestimonialCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.12 }}
-      className="card p-7 border border-gray-100 flex flex-col h-full"
+      className="ds-card p-7 flex flex-col h-full"
     >
       {/* Quote Icon */}
       <div className="flex items-center justify-between mb-5">

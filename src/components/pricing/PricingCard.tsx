@@ -36,12 +36,9 @@ const PricingCard = ({ plan, index }: PricingCardProps) => {
       viewport={{ once: true }}
       transition={{ delay: index * 0.2, duration: 0.6 }}
       whileHover="hover"
+      className="ds-card"
       style={{
-        backgroundColor: 'white',
-        borderRadius: '24px',
         padding: '48px',
-        border: '1px solid #E5E7EB',
-        transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
         display: 'flex',
         flexDirection: 'column',
         height: '100%',
@@ -50,7 +47,7 @@ const PricingCard = ({ plan, index }: PricingCardProps) => {
       variants={{
         hover: { 
           y: -15, 
-          boxShadow: '0 40px 80px rgba(43, 138, 126, 0.12)',
+          boxShadow: '0 40px 80px rgba(43, 138, 126, 0.15)',
           borderColor: '#2B8A7E'
         }
       }}
@@ -64,14 +61,15 @@ const PricingCard = ({ plan, index }: PricingCardProps) => {
           style={{
             width: '48px',
             height: '48px',
-            backgroundColor: '#EAF6F5',
+            backgroundColor: 'rgba(43, 138, 126, 0.1)',
             borderRadius: '12px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             color: '#2B8A7E',
             marginBottom: '24px',
-            transition: 'all 0.3s ease'
+            transition: 'all 0.3s ease',
+            border: '1px solid rgba(43, 138, 126, 0.2)'
           }}
         >
           <MIcon 
@@ -84,9 +82,9 @@ const PricingCard = ({ plan, index }: PricingCardProps) => {
         <motion.h3 
           variants={{ hover: { color: '#2B8A7E' } }}
           style={{ 
-            fontSize: '16px', 
-            fontWeight: '600', 
-            color: '#1B2B3A', 
+            fontSize: '18px', 
+            fontWeight: '700', 
+            color: 'var(--secondary)', 
             fontFamily: 'var(--font-montserrat)',
             marginBottom: '8px',
             lineHeight: '22px'
@@ -117,8 +115,7 @@ const PricingCard = ({ plan, index }: PricingCardProps) => {
               transition: 'all 0.2s ease'
             }}
           >
-            <span style={{ flex: 1, fontSize: '12px', fontWeight: '600', color: '#4B4B4B', fontFamily: 'var(--font-montserrat)' }}>{row.label}</span>
-            <span style={{ fontSize: '13px', fontWeight: '600', color: '#2B8A7E', fontFamily: 'var(--font-montserrat)' }}>{row.price}</span>
+            <span style={{ fontSize: '13px', fontWeight: '700', color: '#2B8A7E', fontFamily: 'var(--font-montserrat)' }}>{row.price}</span>
           </motion.div>
         ))}
       </div>
@@ -133,30 +130,30 @@ const PricingCard = ({ plan, index }: PricingCardProps) => {
               style={{ display: 'flex', alignItems: 'center', gap: '10px' }}
               whileHover="itemHover"
             >
-              <motion.div
-                variants={{
-                  itemHover: { backgroundColor: '#2B8A7E', color: 'white', scale: 1.1 }
-                }}
-                style={{ 
-                  width: '20px', 
-                  height: '20px', 
-                  borderRadius: '50%', 
-                  border: '1.5px solid #2B8A7E', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center',
-                  color: '#2B8A7E',
-                  transition: 'all 0.2s ease'
-                }}
-              >
-                <Check size={12} strokeWidth={4} />
-              </motion.div>
-                <motion.span 
-                  variants={{ itemHover: { color: '#2B8A7E', x: 4 } }}
-                  style={{ fontSize: '14px', color: '#4B4B4B', fontFamily: 'var(--font-montserrat)', fontWeight: '400', transition: 'all 0.2s ease', lineHeight: '20px' }}
+                <motion.div
+                  variants={{
+                    itemHover: { backgroundColor: '#2B8A7E', color: 'white', scale: 1.1 }
+                  }}
+                  style={{ 
+                    width: '20px', 
+                    height: '20px', 
+                    borderRadius: '50%', 
+                    border: '1.5px solid #2B8A7E', 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'center',
+                    color: '#2B8A7E',
+                    transition: 'all 0.2s ease'
+                  }}
                 >
-                  {item}
-                </motion.span>
+                  <Check size={12} strokeWidth={4} />
+                </motion.div>
+                  <motion.span 
+                    variants={{ itemHover: { color: '#2B8A7E', x: 4 } }}
+                    style={{ fontSize: '14px', color: 'var(--secondary)', fontFamily: 'var(--font-montserrat)', fontWeight: '500', transition: 'all 0.2s ease', lineHeight: '20px' }}
+                  >
+                    {item}
+                  </motion.span>
             </motion.div>
           ))}
         </div>
@@ -170,12 +167,12 @@ const PricingCard = ({ plan, index }: PricingCardProps) => {
           style={{
             width: '100%',
             padding: '16px',
-            backgroundColor: '#2B8A7E',
+            background: 'linear-gradient(135deg, #2B8A7E 0%, #1B4FD8 100%)',
             color: 'white',
             border: 'none',
-            borderRadius: '4px',
-            fontSize: '14px',
-            fontWeight: '600',
+            borderRadius: '8px',
+            fontSize: '16px',
+            fontWeight: '700',
             fontFamily: 'var(--font-montserrat)',
             cursor: 'pointer',
             transition: 'all 0.3s ease'
